@@ -6,7 +6,7 @@ import math
 
 import 方舟模板执行
 
-
+#git clone https://github.com/Lanteriso/LostArkAutoPlay.git
 class Skill:
     def __init__(self, name, cooldown):
         self.name = name

@@ -23,7 +23,7 @@ def calculate_point_b(o,a, distance):
     return b
 
 # 假设你定义了一系列的方法
-def method1(xy):
+def method1(pairs1,pairs2):
     print("执行方法1")
 
 def method2(xy):
@@ -93,7 +93,6 @@ image_list2 = [
     ['resources/demo/032.png', 0.7, 小地图点击某点, [[11, 14], 359]],  # 传送门
     ['resources/demo/053.png', 0.7, 小地图点击某点, [[14, 16], 359]],  # 传送门
     ['resources/demo/058.png', 0.7, 小地图点击某点, [[15, 17], 359]],  # 传送门
-
 ]
 
 # 找图
@@ -110,13 +109,15 @@ image_list3 = [
 
     ['resources/demo/022.png', 0.7, 点击某点, [[150, 253], 'left']],  # 星辰确认
     ['resources/demo/023.png', 0.7, 点击某点, [[127, 119], 'left']],  # 复活确认
-    ['resources/demo/024.png', 0.7, 点击某点, [[355, 629], 'left']],    # 地牢结束点击
+    ['resources/demo/024.png', 0.7, 点击某点, [[355, 630], 'left']],    # 地牢结束点击
     ['resources/demo/026.png', 0.7, 点击某点, [[65, 11], 'left']],  # 星辰结束确认ESC
-    ['resources/demo/054.png', 0.7, 点击某点, [[70, 216], 'left']],  # 地牢结束点击
+    ['resources/demo/054.png', 0.7, 点击某点, [[70, 236], 'left']],  # 地牢结束点击
     ['resources/demo/073.png', 0.7, 点击某点, [[52, 18], 'left']],  # 地牢结束点击
-
 ]
 
+image_list4 = [
+    ['resources/demo/079.png', 0.7, method1, [[150, 241], 'left']],  # 地牢确认
+]
 '''
 # 随机选择一张图片的信息和方法
 random_index = random.randint(0, len(image_list) - 1)

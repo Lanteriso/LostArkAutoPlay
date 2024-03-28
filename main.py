@@ -47,7 +47,7 @@ class Player(Character):
     def __init__(self, name, health, attack_power,character_class):
         super().__init__(name, health, attack_power)
         self.level = 1
-        self.气息 = 10000
+        self.气息 = 100000
         self.钓点坐标 = [500,500]
         self.上个目标距离 = 1080
 
@@ -187,6 +187,33 @@ class Player(Character):
         self.气息 -= 60
         print("收线取鱼")
         pyautogui.press('e', interval=random.uniform(0.1, 0.5))
+
+    def 可以撒网(self):
+
+        # 获取当前时间戳
+        current_timestamp = time.time()
+        while not 等待可撒网():
+            time.sleep(0.1)  # 每秒检查一次条件
+            if time.time()-current_timestamp>6:
+                print(f"{self.name} 过了6秒后不可以撒网1")
+                return False
+        return True
+
+    def 开始撒网(self):
+        print("开始撒网")
+        time.sleep(2)
+        pyautogui.moveTo(self.钓点坐标[0], self.钓点坐标[1])
+        pyautogui.press('d', interval=random.uniform(0.1, 0.5))
+
+        # 获取当前时间戳
+        current_timestamp = time.time()
+        time.sleep(3)
+        while not 撒网游戏成功2():
+            if time.time()-current_timestamp>18:
+                print(f"{self.name} 过了15秒后钓鱼失败了")
+                return False
+        return True
+
 
     def 寻找目标(self,other):# 找怪物的图片  返回坐标
         other.位置 = 方舟模板def.查找指定图片返回最佳点([0, 0, 1920, 1080], ['resources/demo/033.png', 'resources/demo/046.png', 'resources/demo/060.png'])
@@ -376,6 +403,7 @@ def 钓鱼(player,fish):
                 player.收线取鱼()
                 current_timestamp = time.time()
             else:
+
                 print("失败")
 
             if time.time()-current_timestamp>50 and 可换鱼杆:  # 换鱼杆
@@ -411,6 +439,66 @@ def 钓鱼(player,fish):
         print("就位确认失败")
         time.sleep(3)
 
+def 钓鱼撒网(player,fish):
+    if player.就位确认():
+        print("就位确认成功")
+
+        # 获取当前时间戳
+        current_timestamp = time.time()
+        可换鱼杆 = True
+        while player.有气息():
+
+            if player.投掷钓线():
+                print('成功')
+                player.收线取鱼()
+                current_timestamp = time.time()
+
+                if player.可以撒网():
+                    player.开始撒网()
+
+
+            else:
+                time.sleep(random.uniform(6.5, 7.5))
+                print("失败")
+
+            if time.time()-current_timestamp>50 and 可换鱼杆:  # 换鱼杆
+                print(f"过了60秒超时超时,气息耗尽也许")
+                pyautogui.press('i')
+                time.sleep(2)
+                pyautogui.moveTo(1835, 765, duration=0.3)
+                time.sleep(2)
+                pyautogui.click(button='right')
+                time.sleep(2)
+                pyautogui.press('i')
+                可换鱼杆 = False
+            if time.time() - current_timestamp > 150: # 回选角色界面
+
+                pyautogui.press('esc')
+                time.sleep(2)
+                pyautogui.moveTo(1252, 727, duration=0.3)
+                time.sleep(2)
+                pyautogui.click()
+                time.sleep(2)
+                pyautogui.press('enter')
+
+            if time.time() - current_timestamp >300:  # 退游戏
+                pyautogui.press('esc')
+                time.sleep(25)
+                pyautogui.press('esc')
+                time.sleep(2)
+                pyautogui.press('enter')
+                print("GameOver")
+                exit()
+
+    else:
+        print("就位确认失败")
+        time.sleep(3)
+
+
+def 等待可撒网():
+    DiscoveredImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/demo/079.png', 0.7, 撒网游戏开始, [[0, 0], 'space']], ])
+    return DiscoveredImg
+
 def 等待上钩(): # 这里找图，！上钩的图
     if 方舟模板def.查找指定图片([930, 455, 70, 77], ['resources/1080/bang.png'],['resources/1080/poplavok.png']):#930 455 1000 532
         print("鱼上钩了!")
@@ -418,6 +506,34 @@ def 等待上钩(): # 这里找图，！上钩的图
     else:
         print("鱼没上钩.")
         return False
+
+def 撒网游戏成功():
+    DiscoveredImg = 方舟模板def.试验查找全屏指定图片([500, 120, 20, 430], [['resources/1080/perfectZone.png', 0.65, 撒网游戏开始, [[0, 0], 'space']],])
+    DiscoveredImg2 = 方舟模板def.试验查找全屏指定图片([516, 120, 44, 430], [['resources/1080/movingArrow.png', 0.65, 撒网游戏开始, [[0, 0], 'space']], ])
+
+    if DiscoveredImg and DiscoveredImg2:
+        print('12345', DiscoveredImg[4][0][1], DiscoveredImg2[4][0][1])
+        if DiscoveredImg[4][0][1] - 18 < DiscoveredImg2[4][0][1]:  # 第一张图片的y轴和第二张的对比
+            pyautogui.press('space')
+            pyautogui.press('space')
+    return False
+
+def 撒网游戏成功2():
+    # 读取图像
+    time.sleep(0.085)
+    screenshot = pyautogui.screenshot(region=(0, 0, 1920, 1080))
+    for i in range(120, 550):
+        pixel1 = screenshot.getpixel((510, i))
+        pixel2 = screenshot.getpixel((539, i))
+        if [pixel1[0], pixel1[1], pixel1[2]] == [229, 86, 8]:
+            pyautogui.press('space')
+            break
+        if [pixel2[0], pixel2[1], pixel2[2]] == [156, 0, 0]:
+            break
+    return False
+def 撒网游戏开始(pairs1,pairs2):
+    print('11')
+
 
 def main():
     choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量：")
@@ -498,7 +614,16 @@ def main():
                 print(f"Congratulations, {player.name}! You have won the game!")
                 break
 
-
+    elif choice == '7':
+        choice = "钓鱼2"
+        player = Player("英雄", 500, 10, "黑狂")
+        monster = Monster("哥布林", 300, 5)
+        fish = Monster("鱼", 10000, 5)
+        print(f"{choice} 进入游戏")
+        time.sleep(3)  # 切到游戏里
+        player.钓点坐标 = pyautogui.position()
+        while player.有气息():
+            钓鱼撒网(player, fish)
 
 
     print("Welcome to the RPG game! You are the hero.")

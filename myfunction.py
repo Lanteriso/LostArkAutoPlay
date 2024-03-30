@@ -10,11 +10,12 @@ def click_on_position(pairs1,pairs2): #
     pyautogui.click(button = pairs1[1])
 
 def 移动并攻击(pairs1,pairs2):
-    print(f'移动并攻击{pairs1, pairs2}')
+    d = 和目标的距离(960, 540, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
+    print(f'移动并攻击{pairs1, pairs2} {d}')
     xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
     pyautogui.click(button=pairs1[1])
-    return 和目标的距离(960, 540, pairs2[0][0]+pairs1[0][0], pairs2[0][1]+pairs1[0][1]) < 450
+    return d < 450
 
 def press_key(pairs1,pairs2):
     # 模拟按下 'e' 键
@@ -49,11 +50,12 @@ def 小地图点击某点(pairs1,pairs2):
     pyautogui.click(button='right')
 
 def 小地图移动攻击某点(pairs1,pairs2):
-    print(f'小地图移动攻击某点{pairs1, pairs2}')
+    d = 和目标的距离(960, 540, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
+    print(f'小地图移动攻击某点{pairs1, pairs2,d}')
     xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
     pyautogui.click(button='right')
-    return 和目标的距离(960, 540, pairs2[0][0]+pairs1[0][0], pairs2[0][1]+pairs1[0][1]) < 450
+    return d < 450
 
 def 试验查找小地图指定图片(Screenxy,templatepath):# 屏幕范围，白名单
     # 在很多血条模板中找，找到一张就返回True,相当于or，返回的是单个坐标,都没找到返回空数组

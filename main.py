@@ -93,6 +93,19 @@ class Player(Character):
                 Skill2("z", 30,1,0.1),
                 Skill2("v", 100,1,0.1),
             ]
+        if character_class == "爆刀":
+            self.skills2 = [
+                Skill2("a", 10,3,0.3),
+                Skill2("s", 5,1,0.1),
+                Skill2("d", 20,1,2.1),
+                Skill2("f", 24,1,2.1),
+                Skill2("q", 16,1,0.1),
+                Skill2("w", 15,1,0.1),
+                Skill2("e", 10,1,0.1),
+                Skill2("r", 15,1,0.1),
+                Skill2("z", 20,1,0.1),
+                Skill2("v", 100,1,0.1),
+            ]
         elif character_class == "红督":
             self.skills = [
                 # ... 添加更多技能

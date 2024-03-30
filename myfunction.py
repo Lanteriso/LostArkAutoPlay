@@ -4,14 +4,14 @@ import random
 import math
 import cv2
 import numpy
-def click_on_position(pairs1,pairs2):
+def click_on_position(pairs1,pairs2): #
     pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10), duration=0.3)
     time.sleep(random.uniform(1.0, 2.0))
     pyautogui.click(button = pairs1[1])
 
 def 移动并攻击(pairs1,pairs2):
     print(f'移动并攻击{pairs1, pairs2}')
-    xy = pyautogui.moveTo((pairs2[0][0]+pairs1[0][0])//2 + random.randint(-10, 10), (pairs2[0][1]+pairs1[0][1])//2 + random.randint(-10, 10))
+    xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
     pyautogui.click(button=pairs1[1])
     return 和目标的距离(960, 540, pairs2[0][0]+pairs1[0][0], pairs2[0][1]+pairs1[0][1]) < 450

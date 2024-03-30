@@ -150,6 +150,19 @@ class Player(Character):
                 Skill("z", 30),
                 Skill("v", 100),
             ]
+            self.skills2 = [
+                # ... 添加更多技能
+                Skill2("a", 14,1,0.3),
+                Skill2("s", 18,1,0.3),
+                Skill2("d", 36,1,0.3),
+                Skill2("f", 24,1,0.3),
+                Skill2("q", 12,1,0.3),
+                Skill2("w", 24,1,0.3),
+                Skill2("e", 24,1,0.3),
+                Skill2("r", 30,1,0.3),
+                Skill2("z", 30,1,0.3),
+                Skill2("v", 100,1,0.3),
+            ]
         self.current_time = 0
 
     def update(self):

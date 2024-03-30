@@ -14,7 +14,8 @@ def 移动并攻击(pairs1,pairs2):
     print(f'移动并攻击{pairs1, pairs2} {d}')
     xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
-    pyautogui.click(button=pairs1[1])
+    if d > 450:
+        pyautogui.click(button=pairs1[1])
     return d < 450
 
 def press_key(pairs1,pairs2):
@@ -54,7 +55,8 @@ def 小地图移动攻击某点(pairs1,pairs2):
     print(f'小地图移动攻击某点{pairs1, pairs2,d}')
     xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
-    pyautogui.click(button='right')
+    if d > 450:
+        pyautogui.click(button='right')
     return d < 450
 
 def 试验查找小地图指定图片(Screenxy,templatepath):# 屏幕范围，白名单

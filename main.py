@@ -717,7 +717,7 @@ def main():
                 print(f"Congratulations, {player.name}! You have won the game!")
                 break
 
-    elif choice == '8':
+    elif choice == '9':
         choice = "自动地牢"
         choice2 = input("你的职业是：")
         player = Player("英雄", 500, 10, choice2)

@@ -3,7 +3,7 @@ import random
 import pyautogui
 import 方舟模板def
 import math
-
+import BehaviorTreePlayer
 import 方舟模板执行
 
 #git clone https://github.com/Lanteriso/LostArkAutoPlay.git
@@ -12,6 +12,17 @@ class Skill:
         self.name = name
         self.cooldown = cooldown
         self.last_used_time = 0
+
+    def is_ready(self, current_time):
+        return current_time - self.last_used_time >= self.cooldown
+
+class Skill2:
+    def __init__(self, name, cooldown,press_count,press_time):
+        self.name = name
+        self.cooldown = cooldown
+        self.last_used_time = 0
+        self.press_count = 1
+        self.press_time = 1
 
     def is_ready(self, current_time):
         return current_time - self.last_used_time >= self.cooldown
@@ -50,6 +61,7 @@ class Player(Character):
         self.气息 = 100000
         self.钓点坐标 = [500,500]
         self.上个目标距离 = 1080
+        self.状态 = '待命中'
 
         self.character_class = character_class
 
@@ -67,6 +79,19 @@ class Player(Character):
                 Skill("r", 40),
                 Skill("z", 30),
                 Skill("v", 100),
+            ]
+            self.skills2 = [
+                Skill2("x", 11,1,0.1),
+                Skill2("a", 8,1,0.1),
+                Skill2("s", 8,1,0.1),
+                Skill2("d", 14,2,0.1),
+                Skill2("f", 18,1,0.1),
+                Skill2("q", 8,1,0.1),
+                Skill2("w", 18,1,0.1),
+                Skill2("e", 14,1,0.1),
+                Skill2("r", 40,1,0.1),
+                Skill2("z", 30,1,0.1),
+                Skill2("v", 100,1,0.1),
             ]
         elif character_class == "红督":
             self.skills = [
@@ -150,6 +175,17 @@ class Player(Character):
                 return skill.name
         print("No skills are available.")
         return "c"
+
+    def use_random_available_skill2(self):
+        self.update()
+        for i in range(len(self.skills2)):
+            skill2 = random.choice(self.skills2)
+            if skill2.is_ready(self.current_time):
+                skill2.last_used_time = self.current_time
+                #print(f"Using skill: {skill.name}")
+                return [skill2.name,skill2.cooldown,skill2.press_count,skill2.press_time]
+        print("No skills are available.")
+        return ["c",1,1,0.1]
 
     def level_up(self):
         self.level += 1
@@ -238,6 +274,17 @@ class Player(Character):
         pyautogui.press(self.use_random_available_skill(), interval=random.uniform(0.3, 0.6))
         print("正在攻击")
 
+    def 攻击目标2(self):
+        #pyautogui.moveTo(xy[0], xy[1], duration=random.uniform(0.1, 0.2))
+        skills = self.use_random_available_skill2()
+
+        for i in range(skills[2]):
+            pyautogui.keyDown(skills[0])
+            time.sleep(skills[3])
+            pyautogui.keyUp(skills[0])
+        # pyautogui.press(, interval=random.uniform(0.3, 0.6))
+        print("正在攻击")
+
     def 搜索小地图(self,other):
         other.位置 = 方舟模板def.查找指定图片返回最佳点([1596, 40, 294, 256], ['resources/demo/031.png','resources/demo/053.png', 'resources/demo/037.png', 'resources/demo/059.png', 'resources/demo/058.png'])
         return other.位置
@@ -324,6 +371,33 @@ def fight(player, monster):
                 player.level_up()
         time.sleep(3)
 def 开始战斗(player, monster):
+    次数 =0
+    while player.is_alive() and monster.is_alive():
+
+        if player.寻找目标(monster):
+            #注意 要先找屏幕血条，再找小地图，都是要找多个结果，因为可能同时有很多血条，小地图也可能有多个红点，要找最近的
+            if player.移动到目标(monster):# 目标位置保存在 monster.位置
+                player.攻击目标(monster)
+            次数 = 0
+        elif player.搜索图片后仅移动(monster) and 次数 > 2:
+            print("找到下一个传送门")
+
+        elif player.搜索各种按钮(monster) and 次数 > 6:
+            time.sleep(random.uniform(2.5, 3.5))
+            #print(f"没找到目标")
+
+
+        elif player.搜索小地图(monster) and 次数 > 8:
+            player.移动到小地图目标(monster)
+
+        elif 次数 > 10:
+            x,y = random.randint(860, 1060), random.randint(440, 640)
+            pyautogui.click(x, y, clicks=1, button='right')
+        else:
+            次数+=1
+        time.sleep(0.3)
+
+def 开始战斗2(player, monster):
     次数 =0
     while player.is_alive() and monster.is_alive():
 
@@ -534,9 +608,11 @@ def 撒网游戏成功2():
 def 撒网游戏开始(pairs1,pairs2):
     print('11')
 
+def 自动地牢开始(player, monster):
+    BehaviorTreePlayer.RunBehaviorTree(player, monster)
 
 def main():
-    choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量：")
+    choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S：")
     if choice == '1':
         choice = "打怪"
         choice2 = input("你的职业是：")
@@ -625,6 +701,33 @@ def main():
         while player.有气息():
             钓鱼撒网(player, fish)
 
+    elif choice == '8':
+        choice = "自动地牢"
+        choice2 = input("你的职业是：")
+        player = Player("英雄", 500, 10, choice2)
+        monster = Monster("哥布林", 300, 5)
+        print(f"{choice} 模式 进入游戏")
+        time.sleep(3)  # 切到游戏里
+        while player.is_alive():
+            自动地牢开始(player, monster)
+            if not monster.is_alive():
+                # 游戏胜利
+                print(f"Congratulations, {player.name}! You have won the game!")
+                break
+
+    if choice == '9':
+        choice = "打怪"
+        choice2 = input("你的职业是：")
+        player = Player("英雄", 500, 10, choice2)
+        monster = Monster("哥布林", 300, 5)
+        print(f"{choice}{choice2}进入游戏")
+        time.sleep(3)  # 切到游戏里
+        while player.is_alive():
+            开始战斗2(player, monster)
+            if not monster.is_alive():
+                # 游戏胜利
+                print(f"Congratulations, {player.name}! You have won the game!")
+                break
 
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():

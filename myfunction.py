@@ -1,0 +1,106 @@
+import pyautogui
+import time
+import random
+import math
+import cv2
+import numpy
+def click_on_position(pairs1,pairs2):
+    pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10), duration=0.3)
+    time.sleep(random.uniform(1.0, 2.0))
+    pyautogui.click(button = pairs1[1])
+
+def 移动并攻击(pairs1,pairs2):
+    print(f'移动并攻击{pairs1, pairs2}')
+    xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
+    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.click(button=pairs1[1])
+    return 和目标的距离(960, 540, pairs2[0][0]+pairs1[0][0], pairs2[0][1]+pairs1[0][1]) < 350
+
+def press_key(pairs1,pairs2):
+    # 模拟按下 'e' 键
+    pyautogui.keyDown(pairs1[0])
+    # 保持按下状态3秒钟
+    time.sleep(pairs1[1])
+    # 模拟释放 'e' 键
+    pyautogui.keyUp(pairs1[0])
+
+def calculate_point_b(o,a, distance):
+    # 计算从原点 O 到点 A 的向量
+    dx = a[0]-o[0]
+    dy = a[1]-o[1]
+
+    # 单位化向量
+    vector_length = math.sqrt(dx ** 2 + dy ** 2)
+    unit_dx = dx / vector_length
+    unit_dy = dy / vector_length
+
+    # 计算延伸向量
+    extension_vector = (unit_dx * distance, unit_dy * distance)
+
+    # 计算点 B 的坐标
+    b = (a[0] + extension_vector[0], a[1] + extension_vector[1])
+
+    return b
+
+def 小地图点击某点(pairs1,pairs2):
+    print(f'小地图点击某点{pairs1, pairs2}')
+    xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
+    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.click(button='right')
+
+def 小地图移动攻击某点(pairs1,pairs2):
+    print(f'小地图移动攻击某点{pairs1, pairs2}')
+    xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
+    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.click(button='right')
+    return 和目标的距离(960, 540, pairs2[0][0]+pairs1[0][0], pairs2[0][1]+pairs1[0][1]) < 350
+
+def 试验查找小地图指定图片(Screenxy,templatepath):# 屏幕范围，白名单
+    # 在很多血条模板中找，找到一张就返回True,相当于or，返回的是单个坐标,都没找到返回空数组
+    imgbase = GetAnImageOfTheScreen(Screenxy[0],Screenxy[1],Screenxy[2],Screenxy[3])
+    for i in templatepath:
+        outTarget = 试验全屏TheImageTemplateMatches(imgbase, i)
+        if outTarget:
+            return i+outTarget
+    return []
+
+def GetAnImageOfTheScreen(ScreenX1,ScreenY1,ScreenX2,ScreenY2):
+    Screen_img = pyautogui.screenshot(region=(ScreenX1,ScreenY1,ScreenX2,ScreenY2))
+    Screen_img = cv2.cvtColor(numpy.array(Screen_img), 0)
+    Screen_img = cv2.cvtColor(Screen_img, cv2.COLOR_BGR2GRAY)
+    return Screen_img
+
+def 试验全屏TheImageTemplateMatches(img1, templatelist, ):
+    # #['resources/demo/068.png', 0.7, 按下某键, [参数1]，[参数2]] = templatelist
+    # 读取大图像
+    base_img = img1
+    # 读取模板图像
+    template_img = cv2.imread(templatelist[0], 0)
+
+    # 如果图像是四通道或更多通道，需要转换为三通道
+    if len(base_img.shape) >= 3:
+        if base_img.shape[2] > 3:
+            base_img = cv2.cvtColor(base_img, cv2.COLOR_BGRA2BGR)
+    if len(template_img.shape) >= 3:
+        if template_img.shape[2] > 3:
+            template_img = cv2.cvtColor(template_img, cv2.COLOR_BGRA2BGR)
+    # 确保模板图像不是空的
+    if template_img is None:
+        print("模板图像未找到，请检查路径")
+        return False
+
+    # 获取模板图像的大小
+    template_size = template_img.shape[::-1]
+
+    # 使用cv2.TM_CCOEFF_NORMED进行归一化相关匹配
+    result = cv2.matchTemplate(base_img, template_img, cv2.TM_CCOEFF_NORMED)
+
+    min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    if max_val > templatelist[1]:
+
+        return [[max_loc,template_size]]  # 找到图片
+    else:
+        return [] # 没找到图片
+
+def 和目标的距离(x1,y1,x2,y2):
+    return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)

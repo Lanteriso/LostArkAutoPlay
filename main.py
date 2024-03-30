@@ -610,6 +610,9 @@ def 撒网游戏开始(pairs1,pairs2):
 def 自动地牢开始(player, monster):
     BehaviorTreePlayer.RunBehaviorTree(player, monster)
 
+def 自动地牢开始2(player, monster):
+    BehaviorTreePlayer.RunBehaviorTree2(player, monster)
+
 def main():
     choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S：")
     if choice == '1':
@@ -714,20 +717,19 @@ def main():
                 print(f"Congratulations, {player.name}! You have won the game!")
                 break
 
-    if choice == '9':
-        choice = "打怪"
+    elif choice == '8':
+        choice = "自动地牢"
         choice2 = input("你的职业是：")
         player = Player("英雄", 500, 10, choice2)
         monster = Monster("哥布林", 300, 5)
-        print(f"{choice}{choice2}进入游戏")
+        print(f"{choice} 模式 进入游戏")
         time.sleep(3)  # 切到游戏里
         while player.is_alive():
-            开始战斗2(player, monster)
+            自动地牢开始2(player, monster)
             if not monster.is_alive():
                 # 游戏胜利
                 print(f"Congratulations, {player.name}! You have won the game!")
                 break
-
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():
         fight(player, monster)

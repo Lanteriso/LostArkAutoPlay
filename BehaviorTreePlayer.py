@@ -34,6 +34,10 @@ def RunBehaviorTree(player, monster):
     if 进入地牢(player):
         开始战斗(player)
 
+def RunBehaviorTree2(player, monster):
+    player.状态 = '星辰护卫中'
+    开始战斗(player)
+
 
 def 进入地牢(player):
 
@@ -84,11 +88,7 @@ def 开始战斗(player):
                     if FindedImg2[2](FindedImg2[3], FindedImg2[4]):
                         player.攻击目标2()
                 else:
-                    time.sleep(2)
-                    x, y = random.randint(860, 1060), random.randint(440, 640)
-                    pyautogui.click(x, y, clicks=1, button='right')
-                    FindedImg3 =  方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],[['resources/dungeon/009.png', 0.7, myfunction.click_on_position, [[70, 236], 'left']], ])
-                    if FindedImg3:
-                        FindedImg3[2](FindedImg3[3], FindedImg3[4])
-                        player.状态 = '地牢结束'
-                        exit()
+                    if not player.试验搜索全屏():
+                        time.sleep(2)
+                        x, y = random.randint(860, 1060), random.randint(440, 640)
+                        pyautogui.click(x, y, clicks=1, button='right')

@@ -21,8 +21,8 @@ class Skill2:
         self.name = name
         self.cooldown = cooldown
         self.last_used_time = 0
-        self.press_count = 1
-        self.press_time = 1
+        self.press_count = press_count
+        self.press_time = press_time
 
     def is_ready(self, current_time):
         return current_time - self.last_used_time >= self.cooldown

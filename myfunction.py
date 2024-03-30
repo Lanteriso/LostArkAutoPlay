@@ -51,13 +51,13 @@ def 小地图点击某点(pairs1,pairs2):
     pyautogui.click(button='right')
 
 def 小地图移动攻击某点(pairs1,pairs2):
-    d = 和目标的距离(960, 540, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
+    d = 和目标的距离(147, 128, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
     print(f'小地图移动攻击某点{pairs1, pairs2,d}')
     xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
     pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
-    if d > 450:
+    if d > 120:
         pyautogui.click(button='right')
-    return d < 450
+    return d < 120
 
 def 试验查找小地图指定图片(Screenxy,templatepath):# 屏幕范围，白名单
     # 在很多血条模板中找，找到一张就返回True,相当于or，返回的是单个坐标,都没找到返回空数组

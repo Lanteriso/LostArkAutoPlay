@@ -29,8 +29,8 @@ image_list2 = [
     ['resources/demo/030.png', 0.7, myfunction.小地图移动攻击某点, [[6, 6], 339,'小怪']],  # 小怪
 ]
 def RunBehaviorTree(player, monster):
-    player.状态 = '星辰护卫中'
-    开始战斗(player)
+    #player.状态 = '星辰护卫中'
+    #开始战斗(player)
     if 进入地牢(player):
         开始战斗(player)
 

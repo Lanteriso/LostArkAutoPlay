@@ -275,15 +275,14 @@ class Player(Character):
         print("正在攻击")
 
     def 攻击目标2(self):
-        #pyautogui.moveTo(xy[0], xy[1], duration=random.uniform(0.1, 0.2))
         skills = self.use_random_available_skill2()
 
         for i in range(skills[2]):
             pyautogui.keyDown(skills[0])
             time.sleep(skills[3])
             pyautogui.keyUp(skills[0])
-        # pyautogui.press(, interval=random.uniform(0.3, 0.6))
-        print("正在攻击")
+
+        print(f"正在攻击 {skills}")
 
     def 搜索小地图(self,other):
         other.位置 = 方舟模板def.查找指定图片返回最佳点([1596, 40, 294, 256], ['resources/demo/031.png','resources/demo/053.png', 'resources/demo/037.png', 'resources/demo/059.png', 'resources/demo/058.png'])

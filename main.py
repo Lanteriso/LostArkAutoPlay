@@ -66,20 +66,6 @@ class Player(Character):
         self.character_class = character_class
 
         if character_class == "武神":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("x", 11),
-                Skill("a", 8),
-                Skill("s", 8),
-                Skill("d", 14),
-                Skill("f", 18),
-                Skill("q", 8),
-                Skill("w", 18),
-                Skill("e", 14),
-                Skill("r", 40),
-                Skill("z", 30),
-                Skill("v", 100),
-            ]
             self.skills2 = [
                 Skill2("x", 11,1,0.1),
                 Skill2("a", 8,1,0.1),
@@ -93,7 +79,7 @@ class Player(Character):
                 Skill2("z", 30,1,0.1),
                 Skill2("v", 100,1,0.1),
             ]
-        if character_class == "爆刀":
+        elif character_class == "爆刀":
             self.skills2 = [
                 Skill2("a", 10,3,0.3),
                 Skill2("s", 5,1,0.1),
@@ -104,6 +90,18 @@ class Player(Character):
                 Skill2("e", 10,1,0.1),
                 Skill2("r", 15,1,0.1),
                 Skill2("z", 20,1,0.1),
+                Skill2("v", 100,1,0.1),
+            ]
+        elif character_class == "赤子":
+            self.skills2 = [
+                Skill2("a", 9,3,0.3),
+                Skill2("s", 14,1,0.1),
+                Skill2("d", 24,1,2.1),
+                Skill2("f", 36,1,2.1),
+                Skill2("q", 8,2,0.3),
+                Skill2("w", 25,1,0.1),
+                Skill2("e", 30,1,0.1),
+                Skill2("r", 25,1,0.1),
                 Skill2("v", 100,1,0.1),
             ]
         elif character_class == "红督":

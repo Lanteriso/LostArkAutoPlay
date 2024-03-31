@@ -198,6 +198,20 @@ class Player(Character):
                 Skill("r", 6,1,0.3),
                 Skill("v", 100,1,0.3),
             ]
+        elif character_class == "环流":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("f1", 27, 1, 0.3),
+                Skill("a", 14,1,0.3),
+                Skill("s", 22,1,0.3),
+                Skill("d", 24,1,2.3),
+                Skill("f", 28,2,0.3),
+                Skill("q", 10,1,0.3),
+                Skill("w", 18,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 16,1,0.3),
+                Skill("v", 100,1,0.3),
+            ]
         self.current_time = 0
 
     def update(self):

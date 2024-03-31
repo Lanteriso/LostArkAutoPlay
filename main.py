@@ -184,6 +184,20 @@ class Player(Character):
                 Skill("z", 15,1,0.3),
                 Skill("v", 100,1,0.3),
             ]
+        elif character_class == "手枪手":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("f1", 27, 1, 0.3),
+                Skill("a", 10,1,0.3),
+                Skill("s", 24,1,0.3),
+                Skill("d", 16,1,2.3),
+                Skill("f", 18,2,0.3),
+                Skill("q", 8,1,0.3),
+                Skill("w", 20,1,0.3),
+                Skill("e", 12,1,0.3),
+                Skill("r", 6,1,0.3),
+                Skill("v", 100,1,0.3),
+            ]
         self.current_time = 0
 
     def update(self):

@@ -130,12 +130,12 @@ class Player(Character):
             self.skills = [
                 # ... 添加更多技能
                 Skill("a", 14,1,0.3),
-                Skill("s", 18,1,0.3),
+                Skill("s", 18,2,0.3),
                 Skill("d", 36,1,0.3),
-                Skill("f", 24,1,0.3),
+                Skill("f", 24,2,0.3),
                 Skill("q", 12,1,0.3),
                 Skill("w", 24,1,0.3),
-                Skill("e", 24,1,0.3),
+                Skill("e", 24,3,0.3),
                 Skill("r", 30,1,0.3),
                 Skill("z", 30,1,0.3),
                 Skill("v", 100,1,0.3),
@@ -189,7 +189,7 @@ class Player(Character):
                 # ... 添加更多技能
                 Skill("f1", 27, 1, 0.3),
                 Skill("a", 10,1,0.3),
-                Skill("s", 24,1,2.0),
+                Skill("s", 24,1,1.8),
                 Skill("d", 16,1,2.3),
                 Skill("f", 18,2,0.3),
                 Skill("q", 8,1,0.3),
@@ -210,6 +210,21 @@ class Player(Character):
                 Skill("w", 18,1,0.3),
                 Skill("e", 24,1,0.3),
                 Skill("r", 16,1,0.3),
+                Skill("v", 100,1,0.3),
+            ]
+        elif character_class == "大枪":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("f1", 27, 1, 0.3),
+                Skill("a", 24,1,1.7),
+                Skill("s", 20,1,0.3),
+                Skill("d", 20,1,2.3),
+                Skill("f", 10,1,0.3),
+                Skill("q", 5,1,0.3),
+                Skill("w", 8,1,0.3),
+                Skill("e", 40,1,0.3),
+                Skill("r", 27,1,1.3),
+                Skill("r", 30, 1, 1.3),
                 Skill("v", 100,1,0.3),
             ]
         self.current_time = 0

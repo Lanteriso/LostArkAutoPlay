@@ -175,13 +175,13 @@ class Player(Character):
                 Skill("f1", 27, 1, 0.3),
                 Skill("a", 24,1,0.3),
                 Skill("s", 45,1,0.3),
-                Skill("d", 30,1,0.3),
+                Skill("d", 30,1,2.3),
                 Skill("f", 30,2,0.3),
                 Skill("q", 20,1,0.3),
                 Skill("w", 14,1,0.3),
                 Skill("e", 24,1,0.3),
                 Skill("r", 30,1,0.3),
-                Skill("z", 30,1,0.3),
+                Skill("z", 15,1,0.3),
                 Skill("v", 100,1,0.3),
             ]
         self.current_time = 0

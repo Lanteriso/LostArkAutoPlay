@@ -92,3 +92,8 @@ def 开始战斗(player):
                         time.sleep(2)
                         x, y = random.randint(860, 1060), random.randint(440, 640)
                         pyautogui.click(x, y, clicks=1, button='right')
+
+                        screenshot = pyautogui.screenshot(region=(808, 962, 1, 1))
+                        pixel1 = screenshot.getpixel((0, 0))
+                        if [pixel1[0], pixel1[1], pixel1[2]] == [143, 4, 2]:
+                            pyautogui.press('f1')

@@ -59,7 +59,6 @@ class Player(Character):
 
         if character_class == "武神":
             self.skills = [
-                Skill("f1", 23, 1, 0.1),
                 Skill("x", 11,1,0.1),
                 Skill("a", 8,1,0.1),
                 Skill("s", 8,1,0.1),
@@ -100,7 +99,6 @@ class Player(Character):
         elif character_class == "红督":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 20,1,0.3),
                 Skill("a", 10,1,0.3),
                 Skill("s", 30,1,2.3),
                 Skill("d", 24,1,0.3),
@@ -157,7 +155,6 @@ class Player(Character):
         elif character_class == "伞萝":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 27,1,0.3),
                 Skill("s", 27,1,0.3),
                 Skill("d", 20,1,0.3),
@@ -172,7 +169,6 @@ class Player(Character):
         elif character_class == "召唤":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 24,1,0.3),
                 Skill("s", 45,1,0.3),
                 Skill("d", 30,1,2.3),
@@ -187,7 +183,6 @@ class Player(Character):
         elif character_class == "手枪手":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 10,1,0.3),
                 Skill("s", 24,1,1.8),
                 Skill("d", 16,1,2.3),
@@ -201,7 +196,6 @@ class Player(Character):
         elif character_class == "环流":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 14,1,0.3),
                 Skill("s", 22,1,0.3),
                 Skill("d", 24,1,2.3),
@@ -215,7 +209,6 @@ class Player(Character):
         elif character_class == "大枪":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 24,1,3.3),
                 Skill("s", 20,1,2.0),
                 Skill("d", 20,1,2.0),
@@ -229,7 +222,6 @@ class Player(Character):
         elif character_class == "气功":
             self.skills = [
                 # ... 添加更多技能
-                Skill("f1", 27, 1, 0.3),
                 Skill("a", 24,1,0.3),
                 Skill("s", 20,1,0.3),
                 Skill("d", 16,1,0.3),

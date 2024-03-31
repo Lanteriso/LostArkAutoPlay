@@ -7,16 +7,8 @@ import BehaviorTreePlayer
 import 方舟模板执行
 
 #git clone https://github.com/Lanteriso/LostArkAutoPlay.git
+
 class Skill:
-    def __init__(self, name, cooldown):
-        self.name = name
-        self.cooldown = cooldown
-        self.last_used_time = 0
-
-    def is_ready(self, current_time):
-        return current_time - self.last_used_time >= self.cooldown
-
-class Skill2:
     def __init__(self, name, cooldown,press_count,press_time):
         self.name = name
         self.cooldown = cooldown
@@ -66,113 +58,115 @@ class Player(Character):
         self.character_class = character_class
 
         if character_class == "武神":
-            self.skills2 = [
-                Skill2("x", 11,1,0.1),
-                Skill2("a", 8,1,0.1),
-                Skill2("s", 8,1,0.1),
-                Skill2("d", 14,2,0.1),
-                Skill2("f", 18,1,0.1),
-                Skill2("q", 8,1,0.1),
-                Skill2("w", 18,1,0.1),
-                Skill2("e", 14,1,0.1),
-                Skill2("r", 40,1,0.1),
-                Skill2("z", 30,1,0.1),
-                Skill2("v", 100,1,0.1),
+            self.skills = [
+                Skill("x", 11,1,0.1),
+                Skill("a", 8,1,0.1),
+                Skill("s", 8,1,0.1),
+                Skill("d", 14,2,0.1),
+                Skill("f", 18,1,0.1),
+                Skill("q", 8,1,0.1),
+                Skill("w", 18,1,0.1),
+                Skill("e", 14,1,0.1),
+                Skill("r", 40,1,0.1),
+                Skill("z", 30,1,0.1),
+                Skill("v", 100,1,0.1),
             ]
         elif character_class == "爆刀":
-            self.skills2 = [
-                Skill2("a", 10,3,0.3),
-                Skill2("s", 5,1,0.1),
-                Skill2("d", 20,1,2.1),
-                Skill2("f", 24,1,2.1),
-                Skill2("q", 16,1,0.1),
-                Skill2("w", 15,1,0.1),
-                Skill2("e", 10,1,0.1),
-                Skill2("r", 15,1,0.1),
-                Skill2("z", 20,1,0.1),
-                Skill2("v", 100,1,0.1),
+            self.skills = [
+                Skill("a", 10,3,0.3),
+                Skill("s", 5,1,0.1),
+                Skill("d", 20,1,2.1),
+                Skill("f", 24,1,2.1),
+                Skill("q", 16,1,0.1),
+                Skill("w", 15,1,0.1),
+                Skill("e", 10,1,0.1),
+                Skill("r", 15,1,0.1),
+                Skill("z", 20,1,0.1),
+                Skill("v", 100,1,0.1),
             ]
         elif character_class == "赤子":
-            self.skills2 = [
-                Skill2("a", 9,3,0.3),
-                Skill2("s", 14,1,0.1),
-                Skill2("d", 24,1,2.1),
-                Skill2("f", 36,1,2.1),
-                Skill2("q", 8,2,0.3),
-                Skill2("w", 25,1,0.1),
-                Skill2("e", 30,1,0.1),
-                Skill2("r", 25,1,0.1),
-                Skill2("v", 100,1,0.1),
+            self.skills = [
+                Skill("a", 9,3,0.3),
+                Skill("s", 14,1,0.1),
+                Skill("d", 24,1,2.1),
+                Skill("f", 36,1,2.1),
+                Skill("q", 8,2,0.3),
+                Skill("w", 25,1,0.1),
+                Skill("e", 30,1,0.1),
+                Skill("r", 25,1,0.1),
+                Skill("v", 100,1,0.1),
             ]
         elif character_class == "红督":
             self.skills = [
                 # ... 添加更多技能
-                Skill("c", 11),
-                Skill("a", 10),
-                Skill("s", 30),
-                Skill("d", 24),
-                Skill("f", 30),
-                Skill("q", 8),
-                Skill("w", 18),
-                Skill("e", 16),
-                Skill("r", 20),
-                Skill("z", 30),
-                Skill("v", 100),
+                Skill("f1", 20,1,0.3),
+                Skill("a", 10,1,0.3),
+                Skill("s", 30,1,2.3),
+                Skill("d", 24,1,0.3),
+                Skill("f", 30,1,2.3),
+                Skill("q", 8,1,0.3),
+                Skill("w", 18,1,2.3),
+                Skill("e", 16,2,0.3),
+                Skill("r", 20,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
         elif character_class == "墨灵":
             self.skills = [
                 # ... 添加更多技能
-                Skill("a", 16),
-                Skill("s", 24),
-                Skill("d", 30),
-                Skill("f", 27),
-                Skill("q", 16),
-                Skill("w", 36),
-                Skill("e", 24),
-                Skill("r", 14),
-                Skill("x", 30),
-                Skill("v", 100),
+                Skill("a", 16,1,0.3),
+                Skill("s", 24,1,0.3),
+                Skill("d", 30,1,0.3),
+                Skill("f", 27,1,0.3),
+                Skill("q", 16,1,0.3),
+                Skill("w", 36,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 14,1,0.3),
+                Skill("x", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
         elif character_class == "黑狂":
             self.skills = [
                 # ... 添加更多技能
-                Skill("a", 14),
-                Skill("s", 18),
-                Skill("d", 36),
-                Skill("f", 24),
-                Skill("q", 12),
-                Skill("w", 24),
-                Skill("e", 24),
-                Skill("r", 30),
-                Skill("z", 30),
-                Skill("v", 100),
+                Skill("a", 14,1,0.3),
+                Skill("s", 18,1,0.3),
+                Skill("d", 36,1,0.3),
+                Skill("f", 24,1,0.3),
+                Skill("q", 12,1,0.3),
+                Skill("w", 24,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 30,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
         elif character_class == "圣骑":
             self.skills = [
                 # ... 添加更多技能
-                Skill("a", 14),
-                Skill("s", 18),
-                Skill("d", 36),
-                Skill("f", 24),
-                Skill("q", 12),
-                Skill("w", 24),
-                Skill("e", 24),
-                Skill("r", 30),
-                Skill("z", 30),
-                Skill("v", 100),
+                Skill("a", 14,1,0.3),
+                Skill("s", 18,1,0.3),
+                Skill("d", 36,1,0.3),
+                Skill("f", 24,1,0.3),
+                Skill("q", 12,1,0.3),
+                Skill("w", 24,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 30,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
-            self.skills2 = [
+        elif character_class == "伞萝":
+            self.skills = [
                 # ... 添加更多技能
-                Skill2("a", 14,1,0.3),
-                Skill2("s", 18,1,0.3),
-                Skill2("d", 36,1,0.3),
-                Skill2("f", 24,1,0.3),
-                Skill2("q", 12,1,0.3),
-                Skill2("w", 24,1,0.3),
-                Skill2("e", 24,1,0.3),
-                Skill2("r", 30,1,0.3),
-                Skill2("z", 30,1,0.3),
-                Skill2("v", 100,1,0.3),
+                Skill("f1", 27, 1, 0.3),
+                Skill("a", 27,1,0.3),
+                Skill("s", 27,1,0.3),
+                Skill("d", 20,1,0.3),
+                Skill("f", 18,2,0.3),
+                Skill("q", 14,1,0.3),
+                Skill("w", 30,1,0.3),
+                Skill("e", 7,1,0.3),
+                Skill("r", 7,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
         self.current_time = 0
 
@@ -202,12 +196,12 @@ class Player(Character):
 
     def use_random_available_skill2(self):
         self.update()
-        for i in range(len(self.skills2)):
-            skill2 = random.choice(self.skills2)
-            if skill2.is_ready(self.current_time):
-                skill2.last_used_time = self.current_time
+        for i in range(len(self.skills)):
+            skill = random.choice(self.skills)
+            if skill.is_ready(self.current_time):
+                skill.last_used_time = self.current_time
                 #print(f"Using skill: {skill.name}")
-                return [skill2.name,skill2.cooldown,skill2.press_count,skill2.press_time]
+                return [skill.name,skill.cooldown,skill.press_count,skill.press_time]
         print("No skills are available.")
         return ["c",1,1,0.1]
 

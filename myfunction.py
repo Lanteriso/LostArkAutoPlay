@@ -54,8 +54,7 @@ def 小地图移动攻击某点(pairs1,pairs2):
     d = 和目标的距离(147, 128, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
     print(f'小地图移动攻击某点{pairs1, pairs2,d}')
     xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
-    if xy[1]>950:xy[1] = 950
-    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.moveTo(xy[0],min(xy[1], 950), duration=random.uniform(0.2, 0.3))
     if d > 120:
         pyautogui.click(button='right')
     return d < 120

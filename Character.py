@@ -43,7 +43,6 @@ class Player(Character):
                 Skill("z", 30,1,0.3),
                 Skill("v", 100,1,0.3),
             ]
-
         elif character_class == "红督":
             self.skills = [
                 # ... 添加更多技能

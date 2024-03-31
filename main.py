@@ -221,7 +221,7 @@ class Player(Character):
                 Skill("d", 20,1,2.0),
                 Skill("f", 10,1,0.3),
                 Skill("q", 5,1,0.3),
-                Skill("w", 8,1,0.3),
+                Skill("w", 12,1,0.3),
                 Skill("e", 40,1,0.3),
                 Skill("r", 27,1,2.0),
                 Skill("v", 100,1,0.3),

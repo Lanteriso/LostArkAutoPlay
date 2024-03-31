@@ -59,6 +59,7 @@ class Player(Character):
 
         if character_class == "武神":
             self.skills = [
+                Skill("f1", 23, 1, 0.1),
                 Skill("x", 11,1,0.1),
                 Skill("a", 8,1,0.1),
                 Skill("s", 8,1,0.1),
@@ -165,6 +166,21 @@ class Player(Character):
                 Skill("w", 30,1,0.3),
                 Skill("e", 7,1,0.3),
                 Skill("r", 7,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
+            ]
+        elif character_class == "召唤":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("f1", 27, 1, 0.3),
+                Skill("a", 24,1,0.3),
+                Skill("s", 45,1,0.3),
+                Skill("d", 30,1,0.3),
+                Skill("f", 30,2,0.3),
+                Skill("q", 20,1,0.3),
+                Skill("w", 14,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 30,1,0.3),
                 Skill("z", 30,1,0.3),
                 Skill("v", 100,1,0.3),
             ]

@@ -223,8 +223,8 @@ class Player(Character):
                 Skill("q", 5,1,0.3),
                 Skill("w", 8,1,0.3),
                 Skill("e", 40,1,0.3),
-                Skill("r", 27,1,1.3),
-                Skill("r", 30, 1, 1.3),
+                Skill("r", 27,1,2.0),
+                Skill("z", 30, 1, 0.3),
                 Skill("v", 100,1,0.3),
             ]
         self.current_time = 0

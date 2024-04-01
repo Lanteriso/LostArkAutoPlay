@@ -5,18 +5,18 @@ import math
 import cv2
 import numpy
 def click_on_position(pairs1,pairs2): #
-    pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10), duration=0.3)
+    pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10), duration=random.uniform(0.2, 0.3))
     time.sleep(random.uniform(1.0, 2.0))
     pyautogui.click(button = pairs1[1])
 
 def 移动并攻击(pairs1,pairs2):
     d = 和目标的距离(960, 540, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
     print(f'移动并攻击{pairs1, pairs2} {d}')
-    xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
+    xy = (pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
     pyautogui.moveTo(xy[0],min(xy[1], 950), duration=random.uniform(0.2, 0.3))
-    if d > 450:
+    if d > 450: # 距离太于450就移动
         pyautogui.click(button=pairs1[1])
-    return d < 450
+    return d < 450 # 距离小于450就返回True,就叫攻击
 
 def press_key(pairs1,pairs2):
     # 模拟按下 'e' 键

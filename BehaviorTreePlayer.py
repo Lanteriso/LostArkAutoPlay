@@ -95,5 +95,5 @@ def 开始战斗(player):
 
                         screenshot = pyautogui.screenshot(region=(808, 962, 1, 1))
                         pixel1 = screenshot.getpixel((0, 0))
-                        if [pixel1[0], pixel1[1], pixel1[2]] == [28, 23, 22]:
+                        if [pixel1[0], pixel1[1], pixel1[2]] == [15, 17, 18]:  # 15, 17, 18   28, 23, 22
                             pyautogui.press('f1')

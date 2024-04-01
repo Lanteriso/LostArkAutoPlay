@@ -4,7 +4,7 @@ import random
 import math
 import cv2
 import numpy
-def click_on_position(pairs1,pairs2): #
+def click_on_position(pairs1,pairs2):
     pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10), duration=random.uniform(0.2, 0.3))
     time.sleep(random.uniform(1.0, 2.0))
     pyautogui.click(button = pairs1[1])

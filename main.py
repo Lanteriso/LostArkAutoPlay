@@ -232,6 +232,19 @@ class Player(Character):
                 Skill("r", 16,1,0.3),
                 Skill("v", 100,1,0.3),
             ]
+        elif character_class == "枪术":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 18,1,0.3),
+                Skill("s", 20,3,0.3),
+                Skill("d", 30,1,0.3),
+                Skill("f", 24,3,0.3),
+                Skill("q", 10,1,0.3),
+                Skill("w", 10,1,0.3),
+                Skill("e", 10,1,0.3),
+                Skill("r", 15,1,0.3),
+                Skill("v", 100,1,3.3),
+            ]
         self.current_time = 0
 
     def update(self):

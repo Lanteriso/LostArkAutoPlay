@@ -13,7 +13,7 @@ def 移动并攻击(pairs1,pairs2):
     d = 和目标的距离(960, 540, pairs2[0][0] + pairs1[0][0], pairs2[0][1] + pairs1[0][1])
     print(f'移动并攻击{pairs1, pairs2} {d}')
     xy = pyautogui.moveTo(pairs2[0][0]+pairs1[0][0] + random.randint(-10, 10), pairs2[0][1]+pairs1[0][1] + random.randint(-10, 10))
-    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.moveTo(xy[0],min(xy[1], 950), duration=random.uniform(0.2, 0.3))
     if d > 450:
         pyautogui.click(button=pairs1[1])
     return d < 450
@@ -47,7 +47,7 @@ def calculate_point_b(o,a, distance):
 def 小地图点击某点(pairs1,pairs2):
     print(f'小地图点击某点{pairs1, pairs2}')
     xy = calculate_point_b((960, 540), (960 + (pairs2[0][0] + pairs1[0][0] - 147), 540 + (pairs2[0][1] + pairs1[0][1] - 128)), pairs1[1])
-    pyautogui.moveTo(xy, duration=random.uniform(0.2, 0.3))
+    pyautogui.moveTo(xy[0],min(xy[1], 950), duration=random.uniform(0.2, 0.3))
     pyautogui.click(button='right')
 
 def 小地图移动攻击某点(pairs1,pairs2):

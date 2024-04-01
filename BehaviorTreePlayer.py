@@ -28,16 +28,33 @@ image_list1 = [
 image_list2 = [
     ['resources/demo/030.png', 0.7, myfunction.小地图移动攻击某点, [[6, 6], 339,'小怪']],  # 小怪
 ]
+
+image_list3 = [
+    # 图片地址，模板匹配参数，对应方法,[要反回到方法的参数用数组的方式表示，不同的方法返回不同的参数，但都是一个数组]
+    # 前3个参数是固定的，弟4参数是一个数组
+    ['resources/demo/074.png', 0.7, myfunction.press_key,['g',1]],  # 进入传送门
+    # ... 添加其他图片的信息和对应的方法
+    # ['resources/demo/071.png', 0.7, 点击某点,[[252,250],'left']],  # 地牢确认
+
+    ['resources/demo/020.png', 0.7, myfunction.click_on_position, [[150, 241], 'left']],  # 地牢确认
+    # ... 添加其他图片的信息和对应的方法
+    ['resources/demo/021.png', 0.7, myfunction.click_on_position, [[150, 244], 'left']],  # 地牢移动下一空间
+
+    ['resources/demo/022.png', 0.7, myfunction.click_on_position, [[150, 253], 'left']],  # 星辰确认
+    ['resources/demo/023.png', 0.7, myfunction.click_on_position, [[127, 119], 'left']],  # 复活确认
+    #['resources/demo/024.png', 0.7, myfunction.click_on_position, [[355, 630], 'left']],    # 地牢结束点击
+    ['resources/demo/026.png', 0.7, myfunction.click_on_position, [[65, 11], 'left']],  # 星辰结束确认ESC
+    ['resources/demo/054.png', 0.7, myfunction.click_on_position, [[70, 236], 'left']],  # 地牢结束点击
+    ['resources/demo/073.png', 0.7, myfunction.click_on_position, [[52, 18], 'left']],  # 同意和拒绝
+]
 def RunBehaviorTree(player, monster):
-    #player.状态 = '星辰护卫中'
-    #开始战斗(player)
     if 进入地牢(player):
         开始战斗(player)
 
 def RunBehaviorTree2(player, monster):
-    player.状态 = '星辰护卫中'
-    开始战斗(player)
-
+    # player.状态 = '星辰护卫中'
+    while 1:
+        运行状态(player)
 
 def 进入地牢(player):
 
@@ -46,54 +63,81 @@ def 进入地牢(player):
     if not FindedImg0:  # 在星辰里
         pyautogui.hotkey('alt','q')
         time.sleep(1)
-        FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
-        if FindedImg:
-            FindedImg[2](FindedImg[3], FindedImg[4])
+    else:
+        FindedImg0 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/010.png', 0.7, myfunction.click_on_position, [[37, 12], 'left']], ])
+        if FindedImg0:
+            FindedImg0[2](FindedImg0[3], FindedImg0[4])
             time.sleep(1)
-            FindedImg4 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/005.png', 0.7, myfunction.click_on_position, [[86, 18], 'left']], ])
-            if FindedImg4:
-                FindedImg4[2](FindedImg4[3], FindedImg4[4])
-                time.sleep(1)
-                FindedImg2 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/002.png', 0.7, myfunction.click_on_position, [[39, 10], 'left']], ])
-                if FindedImg2:
-                    FindedImg2[2](FindedImg2[3], FindedImg2[4])
-                    time.sleep(1)
-                    FindedImg3 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/003.png', 0.7, myfunction.click_on_position, [[54, 15], 'left']], ])
-                    if FindedImg3:
-                        FindedImg3[2](FindedImg3[3], FindedImg3[4])
-                        time.sleep(1)
-                        player.状态 = '星辰护卫中'
-                    return FindedImg3
-        return False  # 不在星辰 且 没成功进入星辰
-    else:# 已经在星辰里
-        player.状态 = '星辰护卫中'
-        return True
+
+        else:
+            return True# 已经在地牢里了，准备战斗
+
+    FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
+    if FindedImg:
+        FindedImg[2](FindedImg[3], FindedImg[4])
+        time.sleep(1)
+        FindedImg4 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/005.png', 0.7, myfunction.click_on_position, [[86, 18], 'left']], ])
+        if FindedImg4:
+            FindedImg4[2](FindedImg4[3], FindedImg4[4])
+            time.sleep(1)
+
+    FindedImg2 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/002.png', 0.7, myfunction.click_on_position, [[39, 10], 'left']], ])
+    if FindedImg2:
+        FindedImg2[2](FindedImg2[3], FindedImg2[4])
+        time.sleep(1)
+        FindedImg0 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],[['resources/dungeon/011.png', 0.7, None, [[86, 18], 'left']], ])
+        if FindedImg0:
+            pyautogui.press('esc')
+            time.sleep(1)
+            pyautogui.press('esc')
+            exit()
+        FindedImg3 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/003.png', 0.7, myfunction.click_on_position, [[54, 15], 'left']], ])
+        if FindedImg3:
+            FindedImg3[2](FindedImg3[3], FindedImg3[4])
+            time.sleep(1)
+        return FindedImg3
+
 
 def 开始战斗(player):
-
-    while player.状态 == '星辰护卫中':
-        # 小地图
-        FindedImg = myfunction.试验查找小地图指定图片([1596, 40, 294, 256], image_list)
-        if FindedImg:
-            if FindedImg[2](FindedImg[3], FindedImg[4]):
+    # 小地图
+    FindedImg = myfunction.试验查找指定图片([1596, 40, 294, 256], image_list)
+    if FindedImg:
+        if FindedImg[2](FindedImg[3], FindedImg[4]):
+            player.攻击目标2()
+    else:
+        FindedImg1 = myfunction.试验查找指定图片([0, 0, 1920, 1080], image_list1)
+        if FindedImg1:
+            if FindedImg1[2](FindedImg1[3], FindedImg1[4]):
                 player.攻击目标2()
         else:
-            FindedImg1 = myfunction.试验查找小地图指定图片([0, 0, 1920, 1080], image_list1)
-            if FindedImg1:
-                if FindedImg1[2](FindedImg1[3], FindedImg1[4]):
+            FindedImg2 = myfunction.试验查找指定图片([1596, 40, 294, 256], image_list2)
+            if FindedImg2:
+                if FindedImg2[2](FindedImg2[3], FindedImg2[4]):
                     player.攻击目标2()
             else:
-                FindedImg2 = myfunction.试验查找小地图指定图片([1596, 40, 294, 256], image_list2)
-                if FindedImg2:
-                    if FindedImg2[2](FindedImg2[3], FindedImg2[4]):
-                        player.攻击目标2()
-                else:
-                    if not player.试验搜索全屏():
-                        time.sleep(2)
-                        x, y = random.randint(860, 1060), random.randint(440, 640)
-                        pyautogui.click(x, y, clicks=1, button='right')
+                FindedImg3 = myfunction.试验查找指定图片([0, 0, 1920, 1080], image_list3)
+                if FindedImg3:
+                    FindedImg3[2](FindedImg3[3], FindedImg3[4])
+                    if FindedImg3[0] == 'resources/demo/054.png':
+                        player.状态 = "待命中"
 
-                        screenshot = pyautogui.screenshot(region=(808, 962, 1, 1))
-                        pixel1 = screenshot.getpixel((0, 0))
-                        if [pixel1[0], pixel1[1], pixel1[2]] == [15, 17, 18]:  # 15, 17, 18   28, 23, 22
-                            pyautogui.press('f1')
+                else:
+                    time.sleep(2)
+                    x, y = random.randint(860, 1060), random.randint(440, 640)
+                    pyautogui.click(x, y, clicks=1, button='right')
+
+                    screenshot = pyautogui.screenshot(region=(808, 962, 1, 1))
+                    r,g,b = screenshot.getpixel((0, 0))
+                    if all(abs(c1 - c2) <= 20 for c1, c2 in zip((r,g,b), (20,20,20))):
+                        pyautogui.press('f1')
+                        time.sleep(0.3)
+
+
+def 运行状态(player):
+    print(player.状态)
+    if player.状态 == "待命中":
+        if 进入地牢(player):
+            player.状态 = "战斗中"
+    elif player.状态 == "战斗中":
+        开始战斗(player)
+

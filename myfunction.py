@@ -59,7 +59,7 @@ def 小地图移动攻击某点(pairs1,pairs2):
         pyautogui.click(button='right')
     return d < 60
 
-def 试验查找小地图指定图片(Screenxy,templatepath):# 屏幕范围，白名单
+def 试验查找指定图片(Screenxy,templatepath):# 屏幕范围，白名单
     # 在很多血条模板中找，找到一张就返回True,相当于or，返回的是单个坐标,都没找到返回空数组
     imgbase = GetAnImageOfTheScreen(Screenxy[0],Screenxy[1],Screenxy[2],Screenxy[3])
     for i in templatepath:

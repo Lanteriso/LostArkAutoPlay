@@ -806,12 +806,9 @@ def main():
         monster = Monster("哥布林", 300, 5)
         print(f"{choice} 模式 进入游戏")
         time.sleep(3)  # 切到游戏里
-        while player.is_alive():
-            自动地牢开始2(player, monster)
-            if not monster.is_alive():
-                # 游戏胜利
-                print(f"Congratulations, {player.name}! You have won the game!")
-                break
+
+        自动地牢开始2(player, monster)
+
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():
         fight(player, monster)

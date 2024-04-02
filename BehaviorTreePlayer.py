@@ -133,10 +133,10 @@ def 开始战斗(player):
                         time.sleep(0.3)
 
 def 开始换人(player):
-    FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
-    if FindedImg:
-        player.状态 = "待命中"
     time.sleep(3)
+    FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
+    return FindedImg
+
 
 def 运行状态(player):
     print(player.状态)
@@ -146,5 +146,6 @@ def 运行状态(player):
     elif player.状态 == "战斗中":
         开始战斗(player)
     elif player.状态 == "换人中":
-        开始换人(player)
+        if 开始换人(player):
+            player.状态 = "待命中"
 

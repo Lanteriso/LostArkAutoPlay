@@ -90,7 +90,7 @@ def 进入地牢(player):
             pyautogui.press('esc')
             time.sleep(1)
             pyautogui.press('esc')
-            exit()
+            player.状态 = "换人中"
         FindedImg3 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/003.png', 0.7, myfunction.click_on_position, [[54, 15], 'left']], ])
         if FindedImg3:
             FindedImg3[2](FindedImg3[3], FindedImg3[4])
@@ -132,6 +132,11 @@ def 开始战斗(player):
                         pyautogui.press('f1')
                         time.sleep(0.3)
 
+def 开始换人(player):
+    FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
+    if FindedImg:
+        player.状态 = "待命中"
+    time.sleep(3)
 
 def 运行状态(player):
     print(player.状态)
@@ -140,4 +145,6 @@ def 运行状态(player):
             player.状态 = "战斗中"
     elif player.状态 == "战斗中":
         开始战斗(player)
+    elif player.状态 == "换人中":
+        开始换人(player)
 

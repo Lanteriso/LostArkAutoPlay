@@ -283,7 +283,7 @@ class Player(Character):
         self.钓点坐标 = [500,500]
         self.上个目标距离 = 1080
         self.状态 = '待命中'
-        self.fish = 0.085
+        self.fish = 1.0
 
         self.character_class = character_class
         self.skills = allskills[self.character_class]
@@ -843,7 +843,7 @@ def main():
         player = Player("英雄", 500, 10, "黑狂")
         monster = Monster("哥布林", 300, 5)
         fish = Monster("鱼", 10000, 5)
-        player.fish = choice2
+        player.fish = int(choice2)
         print(f"{choice} 进入游戏 {choice2}")
         time.sleep(3)  # 切到游戏里
         player.钓点坐标 = pyautogui.position()

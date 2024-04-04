@@ -326,6 +326,7 @@ class Player(Character):
         return ["c",1,1,0.1]
 
     def SetCharacterSkill(self,playerclass):
+        self.character_class = playerclass
         self.skills = allskills[playerclass]
     def level_up(self):
         self.level += 1

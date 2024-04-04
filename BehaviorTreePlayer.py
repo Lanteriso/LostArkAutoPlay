@@ -123,6 +123,8 @@ def 开始战斗(player):
         if FindedImg1:
             if FindedImg1[2](FindedImg1[3], FindedImg1[4]):
                 player.攻击目标2()
+            if FindedImg1[0] == 'resources/dungeon/014.png':
+                pyautogui.press('g')
         else:
             FindedImg2 = myfunction.试验查找指定图片([1596, 40, 294, 256], image_list2)
             if FindedImg2:
@@ -157,6 +159,7 @@ def 查看职业(player):
     FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],image_list4)
     if FindedImg:
         player.character_class = FindedImg[3][1]
+        player.SetCharacterSkill(player.character_class)
         pyautogui.press('p')
 
 def 运行状态(player):

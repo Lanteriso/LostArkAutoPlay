@@ -5,8 +5,10 @@ import 方舟模板def
 import math
 import BehaviorTreePlayer
 import 方舟模板执行
+import Character
 
 #git clone https://github.com/Lanteriso/LostArkAutoPlay.git
+
 
 class Skill:
     def __init__(self, name, cooldown,press_count,press_time):
@@ -18,6 +20,233 @@ class Skill:
 
     def is_ready(self, current_time):
         return current_time - self.last_used_time >= self.cooldown
+
+allskills = {
+                    '默认': [
+                            Skill("x", 10,1,0.3),
+                            Skill("a", 10,1,0.3),
+                            Skill("s", 10,1,0.3),
+                            Skill("d", 10,1,0.3),
+                            Skill("f", 10,1,0.3),
+                            Skill("q", 10,1,0.3),
+                            Skill("w", 10,1,0.3),
+                            Skill("e", 10,1,0.3),
+                            Skill("r", 10,1,0.3),
+                            Skill("z", 10,1,0.3),
+                            Skill("v", 100,1,0.3),
+                            ],
+                    '武神': [
+                            Skill("x", 11, 1, 0.3),
+                            Skill("a", 8, 1, 0.3),
+                            Skill("s", 8, 1, 0.3),
+                            Skill("d", 14, 2, 0.3),
+                            Skill("f", 18, 1, 0.3),
+                            Skill("q", 8, 1, 0.3),
+                            Skill("w", 18, 1, 0.3),
+                            Skill("e", 14, 1, 0.3),
+                            Skill("r", 40, 1, 0.3),
+                            Skill("z", 30, 1, 0.3),
+                            Skill("v", 100, 1, 0.3),
+                           ],
+                    '爆刀': [
+                        Skill("a", 10, 3, 0.3),
+                        Skill("s", 5, 1, 0.1),
+                        Skill("d", 20, 1, 2.1),
+                        Skill("f", 24, 1, 2.1),
+                        Skill("q", 16, 1, 0.1),
+                        Skill("w", 15, 1, 0.1),
+                        Skill("e", 10, 1, 0.1),
+                        Skill("r", 15, 1, 0.1),
+                        Skill("z", 20, 1, 0.1),
+                        Skill("v", 100, 1, 0.1),
+                    ],
+                    '赤子': [
+                        Skill("a", 9, 3, 0.3),
+                        Skill("s", 14, 1, 0.3),
+                        Skill("d", 24, 1, 2.1),
+                        Skill("f", 36, 1, 2.1),
+                        Skill("q", 8, 2, 0.3),
+                        Skill("w", 25, 1, 0.3),
+                        Skill("e", 30, 1, 0.3),
+                        Skill("r", 25, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '红督': [
+                        Skill("a", 10, 1, 0.3),
+                        Skill("s", 30, 1, 2.3),
+                        Skill("d", 24, 1, 0.3),
+                        Skill("f", 30, 1, 2.3),
+                        Skill("q", 8, 1, 0.3),
+                        Skill("w", 18, 1, 2.3),
+                        Skill("e", 16, 2, 0.3),
+                        Skill("r", 20, 1, 0.3),
+                        Skill("z", 30, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '墨灵': [
+                        Skill("a", 16, 1, 0.3),
+                        Skill("s", 24, 1, 0.3),
+                        Skill("d", 30, 1, 0.3),
+                        Skill("f", 27, 1, 0.3),
+                        Skill("q", 24, 1, 0.3),
+                        Skill("w", 24, 1, 0.3),
+                        Skill("e", 30, 1, 0.3),
+                        Skill("r", 25, 1, 0.3),
+                        Skill("x", 30, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '黑狂': [
+                        Skill("a", 16, 1, 0.3),
+                        Skill("s", 24, 1, 0.3),
+                        Skill("d", 30, 1, 0.3),
+                        Skill("f", 27, 1, 0.3),
+                        Skill("q", 24, 1, 0.3),
+                        Skill("w", 24, 1, 0.3),
+                        Skill("e", 30, 1, 0.3),
+                        Skill("r", 25, 1, 0.3),
+                        Skill("x", 30, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '伞萝': [
+                        Skill("a", 27, 1, 0.3),
+                        Skill("s", 27, 1, 0.3),
+                        Skill("d", 20, 1, 0.3),
+                        Skill("f", 18, 2, 0.3),
+                        Skill("q", 14, 1, 0.3),
+                        Skill("w", 30, 1, 0.3),
+                        Skill("e", 7, 1, 0.3),
+                        Skill("r", 7, 1, 0.3),
+                        Skill("z", 30, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '召唤': [
+                        Skill("a", 24, 1, 0.3),
+                        Skill("s", 45, 1, 0.3),
+                        Skill("d", 30, 1, 2.3),
+                        Skill("f", 30, 2, 0.3),
+                        Skill("q", 20, 1, 0.3),
+                        Skill("w", 14, 1, 0.3),
+                        Skill("e", 24, 1, 0.3),
+                        Skill("r", 30, 1, 0.3),
+                        Skill("z", 15, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '手枪手': [
+                        Skill("a", 10, 1, 0.3),
+                        Skill("s", 24, 1, 1.8),
+                        Skill("d", 16, 1, 2.3),
+                        Skill("f", 18, 2, 0.3),
+                        Skill("q", 8, 1, 0.3),
+                        Skill("w", 20, 1, 0.3),
+                        Skill("e", 12, 2, 0.3),
+                        Skill("r", 6, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '环流': [
+                        Skill("a", 14, 1, 0.3),
+                        Skill("s", 22, 1, 0.3),
+                        Skill("d", 24, 1, 2.3),
+                        Skill("f", 28, 2, 0.3),
+                        Skill("q", 10, 1, 0.3),
+                        Skill("w", 18, 1, 0.3),
+                        Skill("e", 24, 1, 0.3),
+                        Skill("r", 16, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '大枪': [
+                        Skill("a", 24, 1, 3.3),
+                        Skill("s", 20, 1, 2.0),
+                        Skill("d", 20, 1, 2.0),
+                        Skill("f", 10, 1, 0.3),
+                        Skill("q", 5, 1, 0.3),
+                        Skill("w", 8, 1, 0.3),
+                        Skill("e", 40, 1, 0.3),
+                        Skill("r", 27, 1, 2.0),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '气功': [
+                        Skill("a", 24, 1, 0.3),
+                        Skill("s", 20, 1, 0.3),
+                        Skill("d", 16, 1, 0.3),
+                        Skill("f", 30, 1, 0.3),
+                        Skill("q", 12, 1, 0.3),
+                        Skill("w", 20, 1, 0.3),
+                        Skill("e", 8, 3, 0.3),
+                        Skill("r", 16, 1, 0.3),
+                        Skill("v", 100, 1, 0.3),
+                    ],
+                    '枪术': [
+                        Skill("a", 18, 1, 0.3),
+                        Skill("s", 20, 3, 0.3),
+                        Skill("d", 30, 1, 0.3),
+                        Skill("f", 24, 3, 0.3),
+                        Skill("q", 10, 1, 0.3),
+                        Skill("w", 10, 1, 0.3),
+                        Skill("e", 10, 1, 0.3),
+                        Skill("r", 15, 1, 0.3),
+                        Skill("v", 100, 1, 3.3),
+                    ],
+                    '霸拳': [
+                        Skill("a", 5, 1, 0.3),
+                        Skill("s", 16, 1, 0.3),
+                        Skill("d", 18, 1, 0.3),
+                        Skill("f", 16, 2, 0.5),
+                        Skill("q", 8, 1, 0.3),
+                        Skill("w", 10, 1, 0.3),
+                        Skill("e", 24, 1, 0.3),
+                        Skill("r", 16, 1, 2.3),
+                        Skill("v", 100, 1, 3.3),
+                    ],
+                    '大锤': [
+                        Skill("a", 18, 1, 2.8),
+                        Skill("s", 30, 2, 0.5),
+                        Skill("d", 24, 1, 0.3),
+                        Skill("f", 30, 1, 0.3),
+                        Skill("q", 5, 1, 0.3),
+                        Skill("w", 12, 1, 0.3),
+                        Skill("e", 10, 1, 0.3),
+                        Skill("r", 30, 1, 0.3),
+                        Skill("v", 100, 1, 3.3),
+                    ],
+                    '鹰眼': [
+                        Skill("a", 10, 1, 0.3),
+                        Skill("s", 12, 1, 0.3),
+                        Skill("d", 30, 1, 1.8),
+                        Skill("f", 24, 1, 0.8),
+                        Skill("q", 18, 1, 0.3),
+                        Skill("w", 12, 1, 0.3),
+                        Skill("e", 20, 1, 0.3),
+                        Skill("r", 20, 1, 0.3),
+                        Skill("z", 10, 1, 0.3),
+                        Skill("v", 100, 1, 3.3),
+                    ],
+                    '圣骑': [
+                        Skill("a", 12, 1, 0.8),
+                        Skill("s", 18, 2, 0.8),
+                        Skill("d", 27, 1, 0.8),
+                        Skill("f", 36, 1, 0.8),
+                        Skill("q", 18, 1, 0.8),
+                        Skill("w", 24, 1, 0.8),
+                        Skill("e", 27, 1, 0.8),
+                        Skill("r", 30, 1, 0.8),
+                        Skill("z", 50, 1, 0.8),
+                        Skill("v", 100, 1, 0.8),
+                    ],
+                    '诗人': [
+                        Skill("a", 18, 2, 0.8),
+                        Skill("s", 30, 1, 0.8),
+                        Skill("d", 30, 1, 0.8),
+                        Skill("f", 24, 1, 0.8),
+                        Skill("q", 24, 1, 0.8),
+                        Skill("w", 16, 1, 0.8),
+                        Skill("e", 24, 1, 0.8),
+                        Skill("r", 12, 1, 0.8),
+                        Skill("x", 50, 1, 0.8),
+                        Skill("v", 100, 1, 0.8),
+                    ],
+            }
+
+
 
 class Character:
     def __init__(self, name, health, attack_power):
@@ -56,276 +285,9 @@ class Player(Character):
         self.状态 = '待命中'
 
         self.character_class = character_class
-        if character_class == "默认":
-            self.skills = [
-                Skill("x", 10,1,0.3),
-                Skill("a", 10,1,0.3),
-                Skill("s", 10,1,0.3),
-                Skill("d", 10,1,0.3),
-                Skill("f", 10,1,0.3),
-                Skill("q", 10,1,0.3),
-                Skill("w", 10,1,0.3),
-                Skill("e", 10,1,0.3),
-                Skill("r", 10,1,0.3),
-                Skill("z", 10,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "武神":
-            self.skills = [
-                Skill("x", 11,1,0.3),
-                Skill("a", 8,1,0.3),
-                Skill("s", 8,1,0.3),
-                Skill("d", 14,2,0.3),
-                Skill("f", 18,1,0.3),
-                Skill("q", 8,1,0.3),
-                Skill("w", 18,1,0.3),
-                Skill("e", 14,1,0.3),
-                Skill("r", 40,1,0.3),
-                Skill("z", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "爆刀":
-            self.skills = [
-                Skill("a", 10,3,0.3),
-                Skill("s", 5,1,0.1),
-                Skill("d", 20,1,2.1),
-                Skill("f", 24,1,2.1),
-                Skill("q", 16,1,0.1),
-                Skill("w", 15,1,0.1),
-                Skill("e", 10,1,0.1),
-                Skill("r", 15,1,0.1),
-                Skill("z", 20,1,0.1),
-                Skill("v", 100,1,0.1),
-            ]
-        elif character_class == "赤子":
-            self.skills = [
-                Skill("a", 9,3,0.3),
-                Skill("s", 14,1,0.1),
-                Skill("d", 24,1,2.1),
-                Skill("f", 36,1,2.1),
-                Skill("q", 8,2,0.3),
-                Skill("w", 25,1,0.1),
-                Skill("e", 30,1,0.1),
-                Skill("r", 25,1,0.1),
-                Skill("v", 100,1,0.1),
-            ]
-        elif character_class == "红督":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 10,1,0.3),
-                Skill("s", 30,1,2.3),
-                Skill("d", 24,1,0.3),
-                Skill("f", 30,1,2.3),
-                Skill("q", 8,1,0.3),
-                Skill("w", 18,1,2.3),
-                Skill("e", 16,2,0.3),
-                Skill("r", 20,1,0.3),
-                Skill("z", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "墨灵":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 16,1,0.3),
-                Skill("s", 24,1,0.3),
-                Skill("d", 30,1,0.3),
-                Skill("f", 27,1,0.3),
-                Skill("q", 24,1,0.3),
-                Skill("w", 24,1,0.3),
-                Skill("e", 30,1,0.3),
-                Skill("r", 25,1,0.3),
-                Skill("x", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "黑狂":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 14,1,0.3),
-                Skill("s", 18,2,0.3),
-                Skill("d", 36,1,0.3),
-                Skill("f", 24,2,0.3),
-                Skill("q", 12,1,0.3),
-                Skill("w", 24,1,0.3),
-                Skill("e", 24,3,0.3),
-                Skill("r", 30,1,0.3),
-                Skill("z", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "圣骑":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 14,1,0.3),
-                Skill("s", 18,1,0.3),
-                Skill("d", 36,1,0.3),
-                Skill("f", 24,1,0.3),
-                Skill("q", 12,1,0.3),
-                Skill("w", 24,1,0.3),
-                Skill("e", 24,1,0.3),
-                Skill("r", 30,1,0.3),
-                Skill("z", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "伞萝":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 27,1,0.3),
-                Skill("s", 27,1,0.3),
-                Skill("d", 20,1,0.3),
-                Skill("f", 18,2,0.3),
-                Skill("q", 14,1,0.3),
-                Skill("w", 30,1,0.3),
-                Skill("e", 7,1,0.3),
-                Skill("r", 7,1,0.3),
-                Skill("z", 30,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "召唤":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 24,1,0.3),
-                Skill("s", 45,1,0.3),
-                Skill("d", 30,1,2.3),
-                Skill("f", 30,2,0.3),
-                Skill("q", 20,1,0.3),
-                Skill("w", 14,1,0.3),
-                Skill("e", 24,1,0.3),
-                Skill("r", 30,1,0.3),
-                Skill("z", 15,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "手枪手":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 10,1,0.3),
-                Skill("s", 24,1,1.8),
-                Skill("d", 16,1,2.3),
-                Skill("f", 18,2,0.3),
-                Skill("q", 8,1,0.3),
-                Skill("w", 20,1,0.3),
-                Skill("e", 12,2,0.3),
-                Skill("r", 6,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "环流":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 14,1,0.3),
-                Skill("s", 22,1,0.3),
-                Skill("d", 24,1,2.3),
-                Skill("f", 28,2,0.3),
-                Skill("q", 10,1,0.3),
-                Skill("w", 18,1,0.3),
-                Skill("e", 24,1,0.3),
-                Skill("r", 16,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "大枪":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 24,1,3.3),
-                Skill("s", 20,1,2.0),
-                Skill("d", 20,1,2.0),
-                Skill("f", 10,1,0.3),
-                Skill("q", 5,1,0.3),
-                Skill("w", 8,1,0.3),
-                Skill("e", 40,1,0.3),
-                Skill("r", 27,1,2.0),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "气功":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 24,1,0.3),
-                Skill("s", 20,1,0.3),
-                Skill("d", 16,1,0.3),
-                Skill("f", 30,1,0.3),
-                Skill("q", 12,1,0.3),
-                Skill("w", 20,1,0.3),
-                Skill("e", 8,3,0.3),
-                Skill("r", 16,1,0.3),
-                Skill("v", 100,1,0.3),
-            ]
-        elif character_class == "枪术":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 18,1,0.3),
-                Skill("s", 20,3,0.3),
-                Skill("d", 30,1,0.3),
-                Skill("f", 24,3,0.3),
-                Skill("q", 10,1,0.3),
-                Skill("w", 10,1,0.3),
-                Skill("e", 10,1,0.3),
-                Skill("r", 15,1,0.3),
-                Skill("v", 100,1,3.3),
-            ]
-        elif character_class == "霸拳":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 5,1,0.3),
-                Skill("s", 16,1,0.3),
-                Skill("d", 18,1,0.3),
-                Skill("f", 16,2,0.5),
-                Skill("q", 8,1,0.3),
-                Skill("w", 10,1,0.3),
-                Skill("e", 24,1,0.3),
-                Skill("r", 16,1,2.3),
-                Skill("v", 100,1,3.3),
-            ]
-        elif character_class == "鹰眼":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 10,1,0.3),
-                Skill("s", 12,1,0.3),
-                Skill("d", 30,1,1.8),
-                Skill("f", 24,1,0.8),
-                Skill("q", 18,1,0.3),
-                Skill("w", 12,1,0.3),
-                Skill("e", 20,1,0.3),
-                Skill("r", 20,1,0.3),
-                Skill("z", 10, 1, 0.3),
-                Skill("v", 100,1,3.3),
-            ]
-        elif character_class == "大锤":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 18,1,2.8),
-                Skill("s", 30,2,0.5),
-                Skill("d", 24,1,0.3),
-                Skill("f", 30,1,0.3),
-                Skill("q", 5,1,0.3),
-                Skill("w", 12,1,0.3),
-                Skill("e", 10,1,0.3),
-                Skill("r", 30,1,0.3),
-                Skill("v", 100,1,3.3),
-            ]
-        elif character_class == "圣骑":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 12,1,0.8),
-                Skill("s", 18,2,0.8),
-                Skill("d", 27,1,0.8),
-                Skill("f", 36,1,0.8),
-                Skill("q", 18,1,0.8),
-                Skill("w", 24,1,0.8),
-                Skill("e", 27,1,0.8),
-                Skill("r", 30,1,0.8),
-                Skill("z", 50, 1, 0.8),
-                Skill("v", 100,1,0.8),
-            ]
-        elif character_class == "诗人":
-            self.skills = [
-                # ... 添加更多技能
-                Skill("a", 18,2,0.8),
-                Skill("s", 30,1,0.8),
-                Skill("d", 30,1,0.8),
-                Skill("f", 24,1,0.8),
-                Skill("q", 24,1,0.8),
-                Skill("w", 16,1,0.8),
-                Skill("e", 24,1,0.8),
-                Skill("r", 12,1,0.8),
-                Skill("x", 50, 1, 0.8),
-                Skill("v", 100,1,0.8),
-            ]
+        self.skills = allskills[self.character_class]
+
+
         self.current_time = 0
 
     def update(self):
@@ -363,6 +325,8 @@ class Player(Character):
         print("No skills are available.")
         return ["c",1,1,0.1]
 
+    def SetCharacterSkill(self,playerclass):
+        self.skills = allskills[playerclass]
     def level_up(self):
         self.level += 1
         self.health += 10

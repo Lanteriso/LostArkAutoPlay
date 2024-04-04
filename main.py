@@ -56,20 +56,33 @@ class Player(Character):
         self.状态 = '待命中'
 
         self.character_class = character_class
-
-        if character_class == "武神":
+        if character_class == "默认":
             self.skills = [
-                Skill("x", 11,1,0.1),
-                Skill("a", 8,1,0.1),
-                Skill("s", 8,1,0.1),
-                Skill("d", 14,2,0.1),
-                Skill("f", 18,1,0.1),
-                Skill("q", 8,1,0.1),
-                Skill("w", 18,1,0.1),
-                Skill("e", 14,1,0.1),
-                Skill("r", 40,1,0.1),
-                Skill("z", 30,1,0.1),
-                Skill("v", 100,1,0.1),
+                Skill("x", 10,1,0.3),
+                Skill("a", 10,1,0.3),
+                Skill("s", 10,1,0.3),
+                Skill("d", 10,1,0.3),
+                Skill("f", 10,1,0.3),
+                Skill("q", 10,1,0.3),
+                Skill("w", 10,1,0.3),
+                Skill("e", 10,1,0.3),
+                Skill("r", 10,1,0.3),
+                Skill("z", 10,1,0.3),
+                Skill("v", 100,1,0.3),
+            ]
+        elif character_class == "武神":
+            self.skills = [
+                Skill("x", 11,1,0.3),
+                Skill("a", 8,1,0.3),
+                Skill("s", 8,1,0.3),
+                Skill("d", 14,2,0.3),
+                Skill("f", 18,1,0.3),
+                Skill("q", 8,1,0.3),
+                Skill("w", 18,1,0.3),
+                Skill("e", 14,1,0.3),
+                Skill("r", 40,1,0.3),
+                Skill("z", 30,1,0.3),
+                Skill("v", 100,1,0.3),
             ]
         elif character_class == "爆刀":
             self.skills = [
@@ -119,7 +132,7 @@ class Player(Character):
                 Skill("f", 27,1,0.3),
                 Skill("q", 24,1,0.3),
                 Skill("w", 24,1,0.3),
-                Skill("e", 24,1,0.3),
+                Skill("e", 30,1,0.3),
                 Skill("r", 25,1,0.3),
                 Skill("x", 30,1,0.3),
                 Skill("v", 100,1,0.3),
@@ -244,6 +257,74 @@ class Player(Character):
                 Skill("e", 10,1,0.3),
                 Skill("r", 15,1,0.3),
                 Skill("v", 100,1,3.3),
+            ]
+        elif character_class == "霸拳":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 5,1,0.3),
+                Skill("s", 16,1,0.3),
+                Skill("d", 18,1,0.3),
+                Skill("f", 16,2,0.5),
+                Skill("q", 8,1,0.3),
+                Skill("w", 10,1,0.3),
+                Skill("e", 24,1,0.3),
+                Skill("r", 16,1,2.3),
+                Skill("v", 100,1,3.3),
+            ]
+        elif character_class == "鹰眼":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 10,1,0.3),
+                Skill("s", 12,1,0.3),
+                Skill("d", 30,1,1.8),
+                Skill("f", 24,1,0.8),
+                Skill("q", 18,1,0.3),
+                Skill("w", 12,1,0.3),
+                Skill("e", 20,1,0.3),
+                Skill("r", 20,1,0.3),
+                Skill("z", 10, 1, 0.3),
+                Skill("v", 100,1,3.3),
+            ]
+        elif character_class == "大锤":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 18,1,2.8),
+                Skill("s", 30,2,0.5),
+                Skill("d", 24,1,0.3),
+                Skill("f", 30,1,0.3),
+                Skill("q", 5,1,0.3),
+                Skill("w", 12,1,0.3),
+                Skill("e", 10,1,0.3),
+                Skill("r", 30,1,0.3),
+                Skill("v", 100,1,3.3),
+            ]
+        elif character_class == "圣骑":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 12,1,0.8),
+                Skill("s", 18,2,0.8),
+                Skill("d", 27,1,0.8),
+                Skill("f", 36,1,0.8),
+                Skill("q", 18,1,0.8),
+                Skill("w", 24,1,0.8),
+                Skill("e", 27,1,0.8),
+                Skill("r", 30,1,0.8),
+                Skill("z", 50, 1, 0.8),
+                Skill("v", 100,1,0.8),
+            ]
+        elif character_class == "诗人":
+            self.skills = [
+                # ... 添加更多技能
+                Skill("a", 18,2,0.8),
+                Skill("s", 30,1,0.8),
+                Skill("d", 30,1,0.8),
+                Skill("f", 24,1,0.8),
+                Skill("q", 24,1,0.8),
+                Skill("w", 16,1,0.8),
+                Skill("e", 24,1,0.8),
+                Skill("r", 12,1,0.8),
+                Skill("x", 50, 1, 0.8),
+                Skill("v", 100,1,0.8),
             ]
         self.current_time = 0
 
@@ -708,8 +789,11 @@ def 自动地牢开始(player, monster):
 def 自动地牢开始2(player, monster):
     BehaviorTreePlayer.RunBehaviorTree2(player, monster)
 
+def 自动地牢开始3(player, monster):
+    BehaviorTreePlayer.RunBehaviorTree3(player, monster)
+
 def main():
-    choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S：")
+    choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S,9自动地牢：")
     if choice == '1':
         choice = "打怪"
         choice2 = input("你的职业是：")
@@ -821,6 +905,14 @@ def main():
         time.sleep(3)  # 切到游戏里
 
         自动地牢开始2(player, monster)
+
+    elif choice == 'a':
+        choice = "自动地牢"
+        player = Player("英雄", 500, 10, '默认')
+        monster = Monster("哥布林", 300, 5)
+        print(f"{choice} 模式 进入游戏")
+        time.sleep(3)  # 切到游戏里
+        自动地牢开始3(player, monster)
 
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():

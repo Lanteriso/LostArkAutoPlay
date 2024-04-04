@@ -12,6 +12,9 @@ image_list = [
     ['resources/demo/051.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
     ['resources/demo/059.png', 0.7, myfunction.小地图点击某点,[[14,19],339,'柱子']],  # 柱子
     ['resources/demo/065.png', 0.7, myfunction.小地图点击某点,[[12,16],339,'柱子']],  # 柱子
+    ['resources/dungeon/012.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
+    ['resources/dungeon/013.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
+    ['resources/dungeon/015.png', 0.7, myfunction.小地图点击某点,[[15,12],339,'命运碎片']],  # 命运碎片
     ['resources/demo/032.png', 0.7, myfunction.小地图点击某点, [[11, 14], 339,'传送门']],  # 传送门
     ['resources/demo/053.png', 0.7, myfunction.小地图点击某点, [[14, 16], 339,'传送门']],  # 传送门
     ['resources/demo/058.png', 0.7, myfunction.小地图点击某点, [[15, 17], 339,'传送门']],  # 传送门
@@ -19,6 +22,7 @@ image_list = [
 
 ]
 image_list1 = [
+    ['resources/dungeon/014.png', 0.7, myfunction.click_on_position,[[42, 60], 'right']],  # 命运碎片
     ['resources/demo/074.png', 0.7, myfunction.press_key,['g',1]],  # 传送门按键
     ['resources/demo/061.png', 0.7, myfunction.click_on_position,[[238, 242], 'right']],  # 传送门图片
     ['resources/demo/063.png', 0.7, myfunction.移动并攻击,[[32,160],'right','地图柱子']],  # 柱子
@@ -47,11 +51,23 @@ image_list3 = [
     ['resources/demo/054.png', 0.7, myfunction.click_on_position, [[70, 236], 'left']],  # 地牢结束点击
     ['resources/demo/073.png', 0.7, myfunction.click_on_position, [[52, 18], 'left']],  # 同意和拒绝
 ]
+
+image_list4 = [
+    ['resources/characterclass/ws.png', 0.7, None, [[0, 0], '武神']],
+    ['resources/characterclass/sq.png', 0.7, None, [[0, 0], '圣骑']],
+
+]
+
 def RunBehaviorTree(player, monster):
     if 进入地牢(player):
         开始战斗(player)
 
 def RunBehaviorTree2(player, monster):
+    # player.状态 = '星辰护卫中'
+    while 1:
+        运行状态(player)
+
+def RunBehaviorTree3(player, monster):
     # player.状态 = '星辰护卫中'
     while 1:
         运行状态(player)
@@ -68,10 +84,8 @@ def 进入地牢(player):
         if FindedImg0:
             FindedImg0[2](FindedImg0[3], FindedImg0[4])
             time.sleep(1)
-
         else:
             return True# 已经在地牢里了，准备战斗
-
     FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
     if FindedImg:
         FindedImg[2](FindedImg[3], FindedImg[4])
@@ -137,10 +151,19 @@ def 开始换人(player):
     FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
     return FindedImg
 
+def 查看职业(player):
+    pyautogui.press('p')
+    time.sleep(3)
+    FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],image_list4)
+    if FindedImg:
+        player.character_class = FindedImg[3][1]
+        pyautogui.press('p')
 
 def 运行状态(player):
-    print(player.状态)
-    if player.状态 == "待命中":
+    print(player.状态,player.character_class)
+    if player.character_class == "默认":
+        查看职业(player)
+    elif player.状态 == "待命中":
         if 进入地牢(player):
             player.状态 = "战斗中"
     elif player.状态 == "战斗中":

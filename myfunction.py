@@ -108,3 +108,4 @@ def 试验全屏TheImageTemplateMatches(img1, templatelist, ):
 
 def 和目标的距离(x1,y1,x2,y2):
     return math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+

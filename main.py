@@ -283,6 +283,7 @@ class Player(Character):
         self.钓点坐标 = [500,500]
         self.上个目标距离 = 1080
         self.状态 = '待命中'
+        self.fish = 0.085
 
         self.character_class = character_class
         self.skills = allskills[self.character_class]
@@ -385,7 +386,7 @@ class Player(Character):
         # 获取当前时间戳
         current_timestamp = time.time()
         time.sleep(3)
-        while not 撒网游戏成功2():
+        while not 撒网游戏成功2(self):
             if time.time()-current_timestamp>18:
                 print(f"{self.name} 过了15秒后钓鱼失败了")
                 return False
@@ -732,9 +733,9 @@ def 撒网游戏成功():
             pyautogui.press('space')
     return False
 
-def 撒网游戏成功2():
+def 撒网游戏成功2(player):
     # 读取图像
-    time.sleep(0.085)
+    time.sleep(player.fish) # 0.085
     screenshot = pyautogui.screenshot(region=(0, 0, 1920, 1080))
     for i in range(120, 550):
         pixel1 = screenshot.getpixel((510, i))
@@ -838,10 +839,12 @@ def main():
 
     elif choice == '7':
         choice = "钓鱼2"
+        choice2 = input("按空格间隔：")
         player = Player("英雄", 500, 10, "黑狂")
         monster = Monster("哥布林", 300, 5)
         fish = Monster("鱼", 10000, 5)
-        print(f"{choice} 进入游戏")
+        player.fish = choice2
+        print(f"{choice} 进入游戏 {choice2}")
         time.sleep(3)  # 切到游戏里
         player.钓点坐标 = pyautogui.position()
         while player.有气息():

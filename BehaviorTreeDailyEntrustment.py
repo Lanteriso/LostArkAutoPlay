@@ -75,8 +75,9 @@ def 换号中():
                 else:
                     FindedImg[2](FindedImg[3], FindedImg[4])
                 time.sleep(1)
-                FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/ysdyw8.png', 0.7, myfunction.click_on_position,[[22, 1], 'left']], ])
+                FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/ysdyw8.png', 0.7, myfunction.click_on_position,[[22, 11], 'left']], ])
                 if FindedImg:
+                    FindedImg[2](FindedImg[3], FindedImg[4])
                     FindedImg[2](FindedImg[3], FindedImg[4])
                     time.sleep(1)
                     pyautogui.press('enter')

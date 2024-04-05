@@ -159,7 +159,7 @@ def 查看职业(player):
     time.sleep(3)
     FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],image_list4)
     if FindedImg:
-
+        print(FindedImg)
         player.SetCharacterSkill(FindedImg[3][1])
         pyautogui.press('p')
 

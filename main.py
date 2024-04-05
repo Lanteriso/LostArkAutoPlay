@@ -6,6 +6,7 @@ import math
 import BehaviorTreePlayer
 import 方舟模板执行
 import Character
+import BehaviorTreeDailyEntrustment
 
 #git clone https://github.com/Lanteriso/LostArkAutoPlay.git
 
@@ -758,6 +759,9 @@ def 自动地牢开始2(player, monster):
 def 自动地牢开始3(player, monster):
     BehaviorTreePlayer.RunBehaviorTree3(player, monster)
 
+def 自动每日委托(player, monster):
+    BehaviorTreeDailyEntrustment.RunBehaviorTree(player, monster)
+
 def main():
     choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S,9自动地牢：")
     if choice == '1':
@@ -881,6 +885,14 @@ def main():
         print(f"{choice} 模式 进入游戏")
         time.sleep(3)  # 切到游戏里
         自动地牢开始3(player, monster)
+
+    elif choice == 'b':
+        choice = "每日委托"
+        player = Player("英雄", 500, 10, '默认')
+        monster = Monster("哥布林", 300, 5)
+        print(f"{choice} 模式 进入游戏")
+        time.sleep(3)  # 切到游戏里
+        自动每日委托(player, monster)
 
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():

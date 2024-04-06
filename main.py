@@ -785,6 +785,8 @@ def 自动地牢开始3(player, monster):
 
 def 自动每日委托(player, monster):
     BehaviorTreeDailyEntrustment.RunBehaviorTree(player, monster)
+def 自动每日委托淘气的妖精(player, monster):
+    BehaviorTreeDailyEntrustment.RunBehaviorTree2(player, monster)
 
 def main():
     choice = input("1打怪，2钓鱼，3不打怪，4地牢过图，5采集，6拿def当变量，7钓鱼S,9自动地牢：")
@@ -868,7 +870,7 @@ def main():
     elif choice == '7':
         choice = "钓鱼2"
         choice2 = input("按空格间隔：")
-        player = Player("英雄", 500, 10, "黑狂")
+        player = Player("英雄", 500, 10, "默认")
         monster = Monster("哥布林", 300, 5)
         fish = Monster("鱼", 10000, 5)
         player.fish = float(choice2)
@@ -917,6 +919,14 @@ def main():
         print(f"{choice} 模式 进入游戏")
         time.sleep(3)  # 切到游戏里
         自动每日委托(player, monster)
+
+    elif choice == 'c':
+        choice = "每日委托"
+        player = Player("英雄", 500, 10, '默认')
+        monster = Monster("哥布林", 300, 5)
+        print(f"{choice} 模式 进入游戏")
+        time.sleep(3)  # 切到游戏里
+        自动每日委托淘气的妖精(player, monster)
 
     print("Welcome to the RPG game! You are the hero.")
     while player.is_alive():

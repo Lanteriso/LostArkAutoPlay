@@ -106,6 +106,10 @@ def 做任务(Entrustment):
     if FindedImg:
         print('1111111')
         pyautogui.press('g')
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/tqdyj4.png', 0.7, myfunction.click_on_position, [[25, 200], 'right']], ])
+    if FindedImg:
+        print('222222')
+        return True
     time.sleep(3)
 
 def 运行状态(player):
@@ -136,6 +140,8 @@ def 淘气的妖精任务(player):
     elif player.状态 == "任务中":
         if 做任务('resources/DailyEntrustment/tqdyj3.png'):
             player.状态 = "任务完成"
+    elif player.状态 == "任务完成":
+        交任务()
 
 
 

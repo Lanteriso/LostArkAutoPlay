@@ -112,6 +112,8 @@ def 做任务(Entrustment):
         return True
     time.sleep(3)
 
+def 交任务():
+    print()
 def 运行状态(player):
     print(player.状态,player.character_class)
     if player.character_class == "默认":

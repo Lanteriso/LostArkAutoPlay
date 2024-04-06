@@ -153,12 +153,13 @@ def 开始战斗(player):
                     time.sleep(2)
                     x, y = random.randint(860, 1060), random.randint(440, 640)
                     pyautogui.click(x, y, clicks=1, button='right')
-
+                    player.攻击目标2()
                     screenshot = pyautogui.screenshot(region=(808, 962, 1, 1))
                     r,g,b = screenshot.getpixel((0, 0))
                     if all(abs(c1 - c2) <= 20 for c1, c2 in zip((r,g,b), (20,20,20))):
                         pyautogui.press('f1')
                         time.sleep(0.3)
+
 
 def 开始换人(player):
     time.sleep(3)

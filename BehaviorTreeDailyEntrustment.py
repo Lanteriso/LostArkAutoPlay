@@ -105,7 +105,6 @@ def 做任务(Entrustment):
     FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [[Entrustment, 0.6, myfunction.click_on_position, [[25, 200], 'right']], ])
     if FindedImg:
         print('1111111')
-        FindedImg[2](FindedImg[3], FindedImg[4])
         pyautogui.press('g')
     time.sleep(3)
 

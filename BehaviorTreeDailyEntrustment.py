@@ -4,7 +4,7 @@ import pyautogui
 import random
 import 方舟模板def
 import myfunction
-
+import MiniMap示例
 
 image_list3 = [
     ['resources/DailyEntrustment/ysdyw.png', 0.7, myfunction.click_on_position, [[923, 23], 'left']],  # 同意和拒绝
@@ -54,6 +54,7 @@ def 接取任务(Entrustment):
         FindedImg[2](FindedImg[3], FindedImg[4])
         time.sleep(1)
         pyautogui.hotkey('alt', 'j')
+        time.sleep(1)
         return True
 
 def 换号中():
@@ -106,14 +107,26 @@ def 做任务(Entrustment):
     if FindedImg:
         print('1111111')
         pyautogui.press('g')
-    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/tqdyj4.png', 0.7, myfunction.click_on_position, [[25, 200], 'right']], ])
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/tqdyj7.png', 0.8, myfunction.click_on_position, [[25, 200], 'right']], ])
     if FindedImg:
         print('222222')
         return True
     time.sleep(3)
 
 def 交任务():
-    print()
+    if MiniMap示例.AiMoveTo(218,179):
+        time.sleep(4)
+        pyautogui.press('g')
+        time.sleep(1)
+        FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/tqdyj5.png', 0.7, None, [[25, 200], 'right']], ])
+        if FindedImg:
+            pyautogui.hotkey('shift','g')
+            time.sleep(1)
+            FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/ysdyw3.png', 0.7, myfunction.click_on_position, [[70, 13], 'left']], ])
+            if FindedImg:
+                FindedImg[2](FindedImg[3], FindedImg[4])
+                return True
+
 def 运行状态(player):
     print(player.状态,player.character_class)
     if player.character_class == "默认":
@@ -134,8 +147,7 @@ def 淘气的妖精任务(player):
     print(player.状态)
     if player.状态 == "待命中":
         if 接取任务('resources/DailyEntrustment/tqdyj.png'):
-            #player.character_class = "传送中"
-            player.状态 = "任务中"
+            player.状态 = "传送中"
     elif player.状态 == "传送中":
         if 传送('resources/DailyEntrustment/tqdyj2.png'):
             player.状态 = "任务中"
@@ -143,7 +155,13 @@ def 淘气的妖精任务(player):
         if 做任务('resources/DailyEntrustment/tqdyj3.png'):
             player.状态 = "任务完成"
     elif player.状态 == "任务完成":
-        交任务()
+        if 交任务():
+            player.状态 = "交了任务"
+    elif player.状态 == "交了任务":
+        if 换号中():
+            player.状态 = "待命中"
+
+
 
 
 

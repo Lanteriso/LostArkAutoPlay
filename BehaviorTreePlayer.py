@@ -68,6 +68,8 @@ image_list4 = [
     ['resources/characterclass/hmz.png', 0.8, None, [[0, 0], '毁灭者']],
     ['resources/characterclass/emlr.png', 0.8, None, [[0, 0], '恶魔利刃']],
     ['resources/characterclass/kpds.png', 0.8, None, [[0, 0], '卡牌大师']],
+    ['resources/characterclass/cjz.png', 0.8, None, [[0, 0], '裁决者']],
+    ['resources/characterclass/zhs.png', 0.8, None, [[0, 0], '召唤师']],
 ]
 
 def RunBehaviorTree(player, monster):

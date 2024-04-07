@@ -92,9 +92,9 @@ def 换号中():
 def 获取移动方式():
     print(MiniMap示例.GetHeroLocation())
     if MiniMap示例.GetHeroLocation():
-        MiniMap示例.AiMoveTo(256, 303)
-        print('到达1111111')
-        return True
+        if MiniMap示例.AiMoveTo(256, 303):
+            print('到达1111111')
+            return True
     elif 传送('resources/DailyEntrustment/tqdyj2.png'):
         print('已传送1111111')
         return True

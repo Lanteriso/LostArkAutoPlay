@@ -67,8 +67,9 @@ def GetHeroLocation():
                                cv2.TM_CCOEFF_NORMED)  # TM_CCOEFF_NORMED 0.45 TM_CCOEFF 0.7 TM_CCORR 10000  TM_CCORR_NORMED 0.9false  TM_SQDIFF 0.8false   TM_SQDIFF_NORMED 1false
     # 找到匹配结果中的最大值
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    w, h = template_size
-    return round(max_loc[0] + w / 2), round(max_loc[1] + h / 2)
+    if max_val > 0.6:
+        w, h = template_size
+        return round(max_loc[0] + w / 2), round(max_loc[1] + h / 2)
 
 def GetAnImageOfTheScreen(ScreenX1,ScreenY1,ScreenX2,ScreenY2):
     Screen_img = pyautogui.screenshot(region=(ScreenX1,ScreenY1,ScreenX2,ScreenY2))
@@ -139,7 +140,7 @@ def AiMoveTo(toX,toY):
     result = cv2.matchTemplate(base_img, template_img,cv2.TM_CCOEFF_NORMED)  # TM_CCOEFF_NORMED 0.45 TM_CCOEFF 0.7 TM_CCORR 10000  TM_CCORR_NORMED 0.9false  TM_SQDIFF 0.8false   TM_SQDIFF_NORMED 1false
     # 找到匹配结果中的最大值
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    print(min_val, '-----', max_val, '-----', min_loc, '-----', max_loc)
+    #print(min_val, '-----', max_val, '-----', min_loc, '-----', max_loc)
 
     # 为了找到最顶部的匹配结果，我们需要找到最大值的左上角
     top_left = max_loc
@@ -178,6 +179,8 @@ def AiMoveTo(toX,toY):
     counter = 0
     while True:
         if len(path) <= 0:return
+        print(f'err{len(path)} --- {counter}')
+        if counter >= len(path):return True  # 假设我们想要在序列超过50时停止
         #路径坐标
         x2, y2, = path[counter]
 
@@ -198,15 +201,14 @@ def AiMoveTo(toX,toY):
             #print(counter,'未到达', x1, y1, x2, y2)
             #time.sleep(0.1)
 
-        if counter > len(path):  # 假设我们想要在序列超过50时停止
-            return True
         time.sleep(0.1)
 
 def main():
 
 
     waitForSwitchToLostArk()
-    AiMoveTo(218,179)
+    # AiMoveTo(218,179)
+    AiMoveTo(256, 303)
 
 
 if __name__ == "__main__":

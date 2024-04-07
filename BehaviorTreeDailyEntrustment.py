@@ -89,6 +89,60 @@ def 换号中():
                     return True
     time.sleep(5)
 
+def 获取移动方式():
+    print(MiniMap示例.GetHeroLocation())
+    if MiniMap示例.GetHeroLocation():
+        MiniMap示例.AiMoveTo(256, 303)
+        print('到达1111111')
+        return True
+    elif 传送('resources/DailyEntrustment/tqdyj2.png'):
+        print('已传送1111111')
+        return True
+    elif 坐船():
+        print('坐船完成1111111')
+        if MiniMap示例.AiMoveTo(256, 303):
+            print('移动完成1111111')
+            return True
+    print('3333333333')
+    return False
+
+
+
+def 坐船():
+    time.sleep(4)
+    pyautogui.press('m')
+    time.sleep(1)
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/czbc.png', 0.7, myfunction.click_on_position, [[40, 10], 'left']], ])
+    if FindedImg:
+        FindedImg[2](FindedImg[3], FindedImg[4])
+        time.sleep(1)
+        FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/rhde.png', 0.7, myfunction.click_on_position, [[25, 28], 'left']], ])
+        if FindedImg:
+            FindedImg[2](FindedImg[3], FindedImg[4])
+            time.sleep(1)
+            FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/sc.png', 0.7, myfunction.click_on_position, [[20, 10], 'left']], ])
+            if FindedImg:
+                FindedImg[2](FindedImg[3], FindedImg[4])
+                time.sleep(1)
+                pyautogui.press('enter')
+                time.sleep(10)
+                pyautogui.press('m')
+                time.sleep(1)
+                pyautogui.click(button='right')
+                time.sleep(1)
+                FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']], ['resources/DailyEntrustment/fnzq0.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']]])
+                if FindedImg:
+                    FindedImg[2](FindedImg[3], FindedImg[4])
+                    time.sleep(1)
+                    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点,[[41, 45], 'left',[-3,3]]], ])
+                    if FindedImg:
+                        FindedImg[2](FindedImg[3], FindedImg[4])
+                        time.sleep(1)
+                        pyautogui.press('enter')
+                        time.sleep(10)
+                        return True
+    return False
+
 def 传送(Entrustment):
     pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
     pyautogui.click()
@@ -98,18 +152,17 @@ def 传送(Entrustment):
         FindedImg[2](FindedImg[3], FindedImg[4])
         time.sleep(1)
         pyautogui.press('enter')
+        time.sleep(5)
 
-        return True
-    time.sleep(5)
+    return FindedImg
+
 
 def 做任务(Entrustment):
     FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [[Entrustment, 0.6, myfunction.click_on_position, [[25, 200], 'right']], ])
     if FindedImg:
-        print('1111111')
         pyautogui.press('g')
     FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/tqdyj7.png', 0.8, myfunction.click_on_position, [[25, 200], 'right']], ])
     if FindedImg:
-        print('222222')
         return True
     time.sleep(3)
 
@@ -146,10 +199,10 @@ def 运行状态(player):
 def 淘气的妖精任务(player):
     print(player.状态)
     if player.状态 == "待命中":
+        if 获取移动方式():
+            player.状态 = "移动完成"
+    elif player.状态 == "移动完成":
         if 接取任务('resources/DailyEntrustment/tqdyj.png'):
-            player.状态 = "传送中"
-    elif player.状态 == "传送中":
-        if 传送('resources/DailyEntrustment/tqdyj2.png'):
             player.状态 = "任务中"
     elif player.状态 == "任务中":
         if 做任务('resources/DailyEntrustment/tqdyj3.png'):

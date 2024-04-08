@@ -147,8 +147,10 @@ def 坐船():
                 pyautogui.press('enter')
                 time.sleep(10)
                 return True
-    pyautogui.press('m')
-    time.sleep(1)
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/czbc.png', 0.7, myfunction.click_on_position, [[40, 10], 'left']], ])
+    if FindedImg:
+        time.sleep(1)
+        pyautogui.press('m')
     return False
 
 def 传送(Entrustment):

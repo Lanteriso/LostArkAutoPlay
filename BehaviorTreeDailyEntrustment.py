@@ -109,8 +109,27 @@ def 获取移动方式():
 
 
 def 坐船():
-    time.sleep(4)
+
+
+    time.sleep(1)
     pyautogui.press('m')
+    time.sleep(1)
+    pyautogui.moveTo(980, 540, duration=random.uniform(0.2, 0.3))
+    time.sleep(1)
+    pyautogui.click(button='right')
+    time.sleep(1)
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']], ['resources/DailyEntrustment/fnzq0.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']]])
+    if FindedImg:
+        FindedImg[2](FindedImg[3], FindedImg[4])
+        time.sleep(1)
+        FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点,[[40, 44], 'left',[-2,2]]], ])
+        if FindedImg:
+            FindedImg[2](FindedImg[3], FindedImg[4])
+            time.sleep(1)
+            pyautogui.press('enter')
+            time.sleep(10)
+            return True
+# ---------------------------------------------------------------------------------------------------
     time.sleep(1)
     FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/czbc.png', 0.7, myfunction.click_on_position, [[40, 10], 'left']], ])
     if FindedImg:
@@ -125,22 +144,10 @@ def 坐船():
                 FindedImg[2](FindedImg[3], FindedImg[4])
                 time.sleep(1)
                 pyautogui.press('enter')
-                time.sleep(20)
-                pyautogui.press('m')
-                time.sleep(1)
-                pyautogui.click(button='right')
-                time.sleep(1)
-                FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']], ['resources/DailyEntrustment/fnzq0.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']]])
-                if FindedImg:
-                    FindedImg[2](FindedImg[3], FindedImg[4])
-                    time.sleep(1)
-                    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点,[[40, 44], 'left',[-2,2]]], ])
-                    if FindedImg:
-                        FindedImg[2](FindedImg[3], FindedImg[4])
-                        time.sleep(1)
-                        pyautogui.press('enter')
-                        time.sleep(20)
-                        return True
+                time.sleep(10)
+                return True
+    pyautogui.press('m')
+    time.sleep(1)
     return False
 
 def 传送(Entrustment):
@@ -152,8 +159,11 @@ def 传送(Entrustment):
         FindedImg[2](FindedImg[3], FindedImg[4])
         time.sleep(1)
         pyautogui.press('enter')
-        time.sleep(5)
-
+        time.sleep(10)
+    else:
+        pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
+        pyautogui.click()
+        time.sleep(1)
     return FindedImg
 
 

@@ -110,9 +110,10 @@ def 获取移动方式():
 
 def 坐船():
 
-
-    time.sleep(1)
-    pyautogui.press('m')
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/czbc.png', 0.7, myfunction.click_on_position, [[40, 10], 'left']], ])
+    if not FindedImg:
+        time.sleep(1)
+        pyautogui.press('m')
     time.sleep(1)
     pyautogui.moveTo(980, 540, duration=random.uniform(0.2, 0.3))
     time.sleep(1)

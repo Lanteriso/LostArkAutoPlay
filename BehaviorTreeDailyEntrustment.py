@@ -92,7 +92,7 @@ def 换号中():
 def 获取移动方式():
     print(MiniMap示例.GetHeroLocation())
     if MiniMap示例.GetHeroLocation():
-        if MiniMap示例.AiMoveTo(209, 305):
+        if MiniMap示例.AiMoveTo(256, 303):
             print('到达1111111')
             return True
     elif 传送('resources/DailyEntrustment/tqdyj2.png'):
@@ -100,7 +100,7 @@ def 获取移动方式():
         return True
     elif 坐船():
         print('坐船完成1111111')
-        if MiniMap示例.AiMoveTo(209, 305):
+        if MiniMap示例.AiMoveTo(256, 303):
             print('移动完成1111111')
             return True
     print('3333333333')

@@ -190,7 +190,7 @@ def AiMoveTo(toX,toY):
         if math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)<10:
             print(counter,'到达',x1, y1,x2, y2)
             #time.sleep(0.1)
-            counter += 5
+            counter += 3
         else:
             xy = calculate_point_b((960, 540), (960 + (x2 - x1), 540 + (y2 - y1)), 339)
             #pyautogui.moveTo(xy[0], min(xy[1], 950), duration=random.uniform(0.1, 0.2))
@@ -207,8 +207,8 @@ def main():
 
 
     waitForSwitchToLostArk()
-    # AiMoveTo(218,179)
-    AiMoveTo(256, 303)
+    AiMoveTo(218,179)
+    # AiMoveTo(256, 303)
 
 
 if __name__ == "__main__":

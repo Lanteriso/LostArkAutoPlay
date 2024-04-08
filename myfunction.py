@@ -73,6 +73,18 @@ def 试验查找指定图片(Screenxy,templatepath):# 屏幕范围，白名单
             return i+outTarget
     return []
 
+def 重复查找指定图片(Screenxy,templatepath,timeout,Interval):# 屏幕范围，白名单,超时时间，间隔
+    # 在很多血条模板中找，找到一张就返回True,相当于or，返回的是单个坐标,都没找到返回空数组
+    current_timestamp = time.time()
+    imgbase = GetAnImageOfTheScreen(Screenxy[0],Screenxy[1],Screenxy[2],Screenxy[3])
+    while time.time() - current_timestamp < timeout:
+        for i in templatepath:
+            outTarget = 试验全屏TheImageTemplateMatches(imgbase, i)
+            if outTarget:
+                return i+outTarget
+        time.sleep(Interval)
+    return []
+
 def GetAnImageOfTheScreen(ScreenX1,ScreenY1,ScreenX2,ScreenY2):
     Screen_img = pyautogui.screenshot(region=(ScreenX1,ScreenY1,ScreenX2,ScreenY2))
     Screen_img = cv2.cvtColor(numpy.array(Screen_img), 0)

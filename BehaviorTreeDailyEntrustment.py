@@ -92,7 +92,7 @@ def 换号中():
 def 获取移动方式():
     print(MiniMap示例.GetHeroLocation())
     if MiniMap示例.GetHeroLocation():
-        if MiniMap示例.AiMoveTo(256, 303):
+        if MiniMap示例.AiMoveTo(209, 305):
             print('到达1111111')
             return True
     elif 传送('resources/DailyEntrustment/tqdyj2.png'):
@@ -100,7 +100,7 @@ def 获取移动方式():
         return True
     elif 坐船():
         print('坐船完成1111111')
-        if MiniMap示例.AiMoveTo(256, 303):
+        if MiniMap示例.AiMoveTo(209, 305):
             print('移动完成1111111')
             return True
     print('3333333333')
@@ -125,7 +125,7 @@ def 坐船():
                 FindedImg[2](FindedImg[3], FindedImg[4])
                 time.sleep(1)
                 pyautogui.press('enter')
-                time.sleep(10)
+                time.sleep(20)
                 pyautogui.press('m')
                 time.sleep(1)
                 pyautogui.click(button='right')
@@ -134,12 +134,12 @@ def 坐船():
                 if FindedImg:
                     FindedImg[2](FindedImg[3], FindedImg[4])
                     time.sleep(1)
-                    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点,[[41, 45], 'left',[-3,3]]], ])
+                    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点,[[40, 44], 'left',[-2,2]]], ])
                     if FindedImg:
                         FindedImg[2](FindedImg[3], FindedImg[4])
                         time.sleep(1)
                         pyautogui.press('enter')
-                        time.sleep(10)
+                        time.sleep(20)
                         return True
     return False
 

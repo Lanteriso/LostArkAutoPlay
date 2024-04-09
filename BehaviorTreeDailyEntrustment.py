@@ -196,6 +196,8 @@ def 交任务():
             if FindedImg:
                 FindedImg[2](FindedImg[3], FindedImg[4])
                 return True
+    else:
+        传送('resources/DailyEntrustment/tqdyj2.png')
 
 def 运行状态(player):
     print(player.状态,player.character_class)

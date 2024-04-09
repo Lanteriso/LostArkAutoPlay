@@ -154,8 +154,10 @@ def 坐船():
     return False
 
 def 传送(Entrustment):
-    pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
-    pyautogui.click()
+    FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/csm.png', 0.8, myfunction.click_on_position, [[467, 10], 'left']], ])
+    if not FindedImg:
+        pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
+        pyautogui.click()
     time.sleep(1)
     FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [[Entrustment, 0.8, myfunction.click_on_position, [[467, 10], 'left']], ])
     if FindedImg:
@@ -164,8 +166,10 @@ def 传送(Entrustment):
         pyautogui.press('enter')
         time.sleep(10)
     else:
-        pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
-        pyautogui.click()
+        FindedImg1 = myfunction.试验查找指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/csm.png', 0.8, myfunction.click_on_position, [[467, 10], 'left']], ])
+        if FindedImg1:
+            pyautogui.moveTo(1695, 320, duration=random.uniform(0.2, 0.3))
+            pyautogui.click()
         time.sleep(1)
     return FindedImg
 

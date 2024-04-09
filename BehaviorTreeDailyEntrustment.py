@@ -197,7 +197,30 @@ def 交任务():
                 FindedImg[2](FindedImg[3], FindedImg[4])
                 return True
     else:
-        传送('resources/DailyEntrustment/tqdyj2.png')
+        FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [
+            ['resources/DailyEntrustment/czbc.png', 0.7, myfunction.click_on_position, [[40, 10], 'left']], ])
+        if not FindedImg:
+            time.sleep(1)
+            pyautogui.press('m')
+        time.sleep(1)
+        pyautogui.moveTo(980, 540, duration=random.uniform(0.2, 0.3))
+        time.sleep(1)
+        pyautogui.click(button='right')
+        time.sleep(1)
+        FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [
+            ['resources/DailyEntrustment/fnzq.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']],
+            ['resources/DailyEntrustment/fnzq0.png', 0.7, myfunction.click_on_position, [[34, 36], 'left']]])
+        if FindedImg:
+            FindedImg[2](FindedImg[3], FindedImg[4])
+            time.sleep(1)
+            FindedImg = myfunction.试验查找指定图片([0, 0, 1920, 1080], [
+                ['resources/DailyEntrustment/fnzq1.png', 0.7, myfunction.点击某点, [[40, 44], 'left', [-2, 2]]], ])
+            if FindedImg:
+                FindedImg[2](FindedImg[3], FindedImg[4])
+                time.sleep(1)
+                pyautogui.press('enter')
+                time.sleep(10)
+                return True
 
 def 运行状态(player):
     print(player.状态,player.character_class)

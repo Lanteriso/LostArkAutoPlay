@@ -220,7 +220,7 @@ def 交任务():
                 time.sleep(1)
                 pyautogui.press('enter')
                 time.sleep(10)
-                return True
+
 
 def 运行状态(player):
     print(player.状态,player.character_class)

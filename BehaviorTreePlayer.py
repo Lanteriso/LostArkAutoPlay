@@ -97,12 +97,20 @@ def 进入地牢(player):
         pyautogui.hotkey('alt','q')
         time.sleep(1)
     else:
+        FindedImg = myfunction.试验查找指定图片([1596, 40, 294, 256], [['resources/dungeon/015.png', 0.7, myfunction.小地图点击某点,[[15,12],339,'命运碎片']], ])
+        if FindedImg:
+            FindedImg[2](FindedImg[3], FindedImg[4])
+            return False  # 副本里还有命运碎片
+        FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/014.png', 0.7, myfunction.click_on_position,[[42, 60], 'right']], ])
+        if FindedImg:
+            FindedImg[2](FindedImg[3], FindedImg[4])
+            return False  # 副本里还有命运碎片
         FindedImg0 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/010.png', 0.7, myfunction.click_on_position, [[37, 12], 'left']], ])
         if FindedImg0:
             FindedImg0[2](FindedImg0[3], FindedImg0[4])
             time.sleep(1)
         else:
-            return True# 已经在地牢里了，准备战斗
+            return True  # 已经在地牢里了，准备战斗
     FindedImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/dungeon/008.png', 0.7, myfunction.click_on_position, [[111, 136], 'left']], ])
     if FindedImg:
         FindedImg[2](FindedImg[3], FindedImg[4])

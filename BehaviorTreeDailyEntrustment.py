@@ -89,10 +89,10 @@ def 换号中():
                     return True
     time.sleep(5)
 
-def 获取移动方式():
+def 获取移动方式(player):
     print(MiniMap示例.GetHeroLocation())
     if MiniMap示例.GetHeroLocation():
-        if MiniMap示例.AiMoveTo(256, 303): #209, 305     256, 303
+        if MiniMap示例.AiMoveTo(player.位置[0], player.位置[1]): #209, 305     256, 303
             print('到达1111111')
             return True
     elif 传送('resources/DailyEntrustment/tqdyj2.png'):
@@ -100,7 +100,7 @@ def 获取移动方式():
         return True
     elif 坐船():
         print('坐船完成1111111')
-        if MiniMap示例.AiMoveTo(256, 303): # 209, 305     256, 303
+        if MiniMap示例.AiMoveTo(player.位置[0], player.位置[1]): # 209, 305     256, 303
             print('移动完成1111111')
             return True
     print('3333333333')
@@ -241,7 +241,7 @@ def 运行状态(player):
 def 淘气的妖精任务(player):
     print(player.状态)
     if player.状态 == "待命中":
-        if 获取移动方式():
+        if 获取移动方式(player):
             player.状态 = "移动完成"
     elif player.状态 == "移动完成":
         if 接取任务('resources/DailyEntrustment/tqdyj.png'):

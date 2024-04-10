@@ -933,7 +933,7 @@ def main():
         choice = "每日委托"
         player = Player("英雄", 500, 10, '默认')
         monster = Monster("哥布林", 300, 5)
-        coordinates_input = input("(218, 179) (256, 303)请输入坐标点，格式为 x,y：")  #
+        coordinates_input = input("(209, 305) (256, 303)请输入坐标点，格式为 x,y：")  #
         parts = coordinates_input.split(',')
         player.位置 = [int(parts[0]),int(parts[1])]
         print(f"{choice} 模式 进入游戏 {player.位置}")

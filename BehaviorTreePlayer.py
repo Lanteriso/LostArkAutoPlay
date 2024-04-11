@@ -14,7 +14,8 @@ image_list = [
     ['resources/demo/065.png', 0.7, myfunction.小地图点击某点,[[12,16],339,'柱子']],  # 柱子
     ['resources/dungeon/012.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
     ['resources/dungeon/013.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
-    ['resources/dungeon/081.png', 0.7, myfunction.小地图点击某点,[[10,15],339,'柱子']],  # 柱子
+    ['resources/dungeon/081.png', 0.7, myfunction.小地图点击某点,[[11,16],339,'柱子']],  # 柱子
+    ['resources/dungeon/082.png', 0.7, myfunction.小地图点击某点, [[11, 16], 339, '柱子']],  # 柱子
     ['resources/dungeon/015.png', 0.7, myfunction.小地图点击某点,[[15,12],339,'命运碎片']],  # 命运碎片
     ['resources/demo/032.png', 0.7, myfunction.小地图点击某点, [[11, 14], 339,'传送门']],  # 传送门
     ['resources/demo/053.png', 0.7, myfunction.小地图点击某点, [[14, 16], 339,'传送门']],  # 传送门

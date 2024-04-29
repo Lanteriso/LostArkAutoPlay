@@ -116,16 +116,9 @@ image_list3 = [
 ]
 
 image_list4 = [
-    ['resources/demo/079.png', 0.7, method1, [[150, 241], 'left']],  # 地牢确认
+    # 图片地址，模板匹配参数，对应方法,[要反回到方法的参数用数组的方式表示，不同的方法返回不同的参数，但都是一个数组]
+    # 前3个参数是固定的，弟4参数是一个数组
+
+    ['resources/demo/mzhddl.png', 0.7, 点击某点, [[0, 0], 'left']],  # 每周混沌地牢
+    ['resources/demo/mzxchw.png', 0.7, 点击某点, [[0, 0], 'left']],  # 每周星辰护卫
 ]
-'''
-# 随机选择一张图片的信息和方法
-random_index = random.randint(0, len(image_list) - 1)
-image_name,  image_scale,image_offset, random_image_method = image_list[random_index]
-
-# 打印随机选择的图片信息
-print(f"随机选择的图片: {image_name} , 缩放大小: {image_scale}")
-
-# 执行对应图片的方法
-random_image_method(image_scale)
-'''

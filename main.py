@@ -340,6 +340,7 @@ class Player(Character):
         self.钓点坐标 = [500,500]
         self.上个目标距离 = 1080
         self.状态 = '待命中'
+        self.每周任务 = False
         self.fish = 1.0
 
         self.character_class = character_class
@@ -557,6 +558,32 @@ class Player(Character):
             DiscoveredImg[2](DiscoveredImg[3],DiscoveredImg[4])
         return DiscoveredImg
 
+    def 试验每周任务(self):
+        if self.每周任务:return False
+        DiscoveredImg1 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],[['resources/demo/mzhddl.png', 0.7, None, [[0, 0], 'left']], ])
+        DiscoveredImg2 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080],[['resources/demo/mzxchw.png', 0.7, None, [[0, 0], 'left']], ])
+        if not DiscoveredImg1 or not DiscoveredImg2:
+            pyautogui.hotkey('alt', 'j')
+            time.sleep(2)
+            DiscoveredImg3 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/demo/mzwt.png', 0.7, 方舟模板执行.点击某点, [[35, 10], 'left']], ])
+            if DiscoveredImg3:
+                DiscoveredImg3[2](DiscoveredImg3[3], DiscoveredImg3[4])
+                time.sleep(2)
+                DiscoveredImg4 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/demo/mzhddl2.png', 0.7, 方舟模板执行.点击某点, [[916, 20], 'left']], ])
+                if DiscoveredImg4:
+                    DiscoveredImg4[2](DiscoveredImg4[3], DiscoveredImg4[4])
+                    time.sleep(2)
+                DiscoveredImg5 = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/demo/mzxchw2.png', 0.7, 方舟模板执行.点击某点, [[916, 20], 'left']], ])
+                if DiscoveredImg5:
+                    DiscoveredImg5[2](DiscoveredImg5[3], DiscoveredImg5[4])
+                    time.sleep(2)
+
+            pyautogui.hotkey('alt', 'j')
+            time.sleep(2)
+            self.每周任务 = True
+            return True
+
+
 def fight(player, monster):
     while player.is_alive() and monster.is_alive():
         player.attack(monster)
@@ -647,6 +674,8 @@ def 开始试验(player, monster):
     if player.试验搜索全屏():
         return True
     elif player.试验搜索小地图():
+        return True
+    elif player.试验每周任务():
         return True
     else:
         time.sleep(2)

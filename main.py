@@ -588,7 +588,7 @@ class Player(Character):
                 self.每周任务 = True
 
     def 换角色(self):
-        DiscoveredImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/ysdyw4.png.png', 0.7, None, [[0, 0], 'left']], ])
+        DiscoveredImg = 方舟模板def.试验查找全屏指定图片([0, 0, 1920, 1080], [['resources/DailyEntrustment/ysdyw4.png', 0.7, None, [[0, 0], 'left']], ])
         if DiscoveredImg:
             self.每周任务 = False
             return True
